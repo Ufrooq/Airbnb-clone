@@ -1,7 +1,8 @@
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Foot from "./components/footer/Foot";
+// import Foot from "./components/footer/Foot";
+import Feed from "./components/feed/Feed";
 
 function App() {
   return (
@@ -9,9 +10,9 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route></Route>
+          <Route path="/" element={<Feed />} />
         </Routes>
-        <Foot />
+        {/* <Foot /> */}
       </BrowserRouter>
     </div>
   );

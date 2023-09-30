@@ -1,0 +1,38 @@
+.card {
+  width: 300px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  .media {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    img {
+      aspect-ratio: 11/12;
+      border-radius: 20px;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  .desc {
+    h2 {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 0.92rem;
+      color: rgba(0, 0, 0, 0.674);
+      margin-top: 2px;
+    }
+  }
+
+  .price {
+    p {
+      font-weight: 500;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}
