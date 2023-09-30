@@ -24,8 +24,8 @@ $pink_color: #fa4d6d;
     column-gap: 15px;
     align-items: center;
     border-radius: 30px;
-    padding: 15px 25px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px 25px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     :link {
       text-decoration: none;
       font-weight: 600;
@@ -34,8 +34,8 @@ $pink_color: #fa4d6d;
     i {
       background-color: $pink_color;
       font-weight: bold;
-      font-size: 1.2rem;
-      padding: 7px;
+      font-size: 1.1rem;
+      padding: 8px;
       border-radius: 50%;
       color: #fff;
     }

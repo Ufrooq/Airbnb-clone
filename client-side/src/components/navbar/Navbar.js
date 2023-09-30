@@ -10,8 +10,8 @@ const Navbar = () => {
         <h1>airbnb</h1>
       </div>
       <div className="features">
-        <Link style={{ color: "black" }}>Anywhere</Link>
-        <Link style={{ color: "black" }}>Anyweek</Link>
+        <Link style={{ color: "black" }}>Anywhere</Link>|
+        <Link style={{ color: "black" }}>Anyweek</Link>|
         <Link style={{ color: "black" }}>Add guests</Link>
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
