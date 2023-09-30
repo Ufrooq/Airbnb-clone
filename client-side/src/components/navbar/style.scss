@@ -1,0 +1,50 @@
+$pink_color: #fa4d6d;
+.navbar {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  .logo {
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 0pc 5px;
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 1.7rem;
+    }
+  }
+
+  .features {
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
+    border-radius: 30px;
+    padding: 15px 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    :link {
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    i {
+      background-color: $pink_color;
+      font-weight: bold;
+      font-size: 1.2rem;
+      padding: 7px;
+      border-radius: 50%;
+      color: #fff;
+    }
+  }
+
+  .other {
+    i {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+}

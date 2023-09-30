@@ -1,9 +1,16 @@
 import "./App.scss";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <p>Lorem100ds djs sc sdc sdcscd ud uf dfd fu</p>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route></Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
