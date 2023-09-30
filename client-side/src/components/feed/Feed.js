@@ -4,7 +4,15 @@ import "./style.scss";
 
 const Feed = () => {
   return (
-    <section>
+    <section className="feed_section">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
       <Card />
     </section>
   );

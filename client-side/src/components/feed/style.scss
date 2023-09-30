@@ -1,0 +1,9 @@
+.feed_section {
+  margin-top: 50px;
+  width: 70%;
+  display: grid;
+  column-gap: 20px;
+  row-gap: 30px;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}

@@ -1,8 +1,8 @@
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-// import Foot from "./components/footer/Foot";
 import Feed from "./components/feed/Feed";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Feed />} />
         </Routes>
-        {/* <Foot /> */}
+        <Footer />
       </BrowserRouter>
     </div>
   );
