@@ -3,22 +3,42 @@
   padding: 10px;
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
   .media {
     width: 100%;
     overflow: hidden;
     border-radius: 20px;
+    position: relative;
     img {
-      aspect-ratio: 11/12;
+      aspect-ratio: 12/14;
       border-radius: 20px;
       object-fit: cover;
       width: 100%;
     }
+    i {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 1.2rem;
+      color: #0000008d;
+    }
   }
   .desc {
-    h2 {
-      font-weight: 700;
-      font-size: 1.3rem;
+    padding: 5px;
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      h2 {
+        font-weight: 700;
+        font-size: 1.3rem;
+      }
+      span {
+        i {
+          font-size: 0.9rem;
+          margin: 0px 3px;
+          color: gold;
+        }
+      }
     }
     p {
       font-size: 0.92rem;
@@ -28,6 +48,7 @@
   }
 
   .price {
+    padding: 5px;
     p {
       font-weight: 500;
       span {

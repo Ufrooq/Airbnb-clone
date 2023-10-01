@@ -9,12 +9,16 @@ const Card = () => {
           src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg"
           alt="media"
         />
+        <i class="fa-solid fa-heart"></i>
       </div>
       <div className="desc">
-        <h2>Bleru, Sweden</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, est!
-        </p>
+        <div className="main">
+          <h2>Bleru, Sweden</h2>
+          <span>
+            <i class="fa-solid fa-star"></i>4.9
+          </span>
+        </div>
+        <p>300 kilometers away</p>
       </div>
       <div className="price">
         <p>
