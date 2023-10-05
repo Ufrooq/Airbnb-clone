@@ -46,17 +46,34 @@
       grid-area: 1 / 1 / 3 / 3;
     }
   }
+  .middle_section {
+    .rooms_info_section {
+      position: relative;
+      .room_charges_card {
+        position: absolute;
+        right: 0px;
+        top: 30px;
+        background-color: red;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
 
-  .rooms_info_section {
-    position: relative;
-    .room_charges_card {
-      position: absolute;
-      right: 0px;
-      top: 30px;
-      background-color: red;
-      width: 350px;
-      display: flex;
-      flex-direction: column;
+        .top_Ofcard {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          p {
+            span {
+              font-size: 1.6rem;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .host_section {
+      .header_section {
+      }
     }
   }
 }
