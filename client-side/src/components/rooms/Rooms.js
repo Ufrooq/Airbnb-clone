@@ -65,19 +65,22 @@ const Rooms = () => {
       <div className="description">
         <ul>
           <li>
+            <i class="fa-solid fa-ranking-star"></i>
             <div>
               <p>Dragos is a Superhost</p>
               <p>Superhosts are experienced, highly rated Hosts.</p>
             </div>
-            <div>
-              <i class="fa-solid fa-ranking-star"></i>
-            </div>
           </li>
           <li>
             <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <p>Great location</p>
+              <p>100% of recent guests gave the location a 5-star rating.</p>
+            </div>
           </li>
           <li>
             <i class="fa-solid fa-calendar-week"></i>
+            <p>Free cancellation before Oct 30.</p>
           </li>
         </ul>
         <p>

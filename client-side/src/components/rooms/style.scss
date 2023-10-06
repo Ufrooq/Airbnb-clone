@@ -116,6 +116,11 @@
   .description {
     width: 60%;
     ul {
+      li {
+        list-style-type: none;
+        display: flex;
+        column-gap: 20px;
+      }
     }
     p {
       text-align: justify;
