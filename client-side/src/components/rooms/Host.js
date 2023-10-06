@@ -8,7 +8,7 @@ const Host = () => {
         <img src={im} alt="" srcset="" />
         <div className="hosted_by">
           <p>Hosted by Nicolas</p>
-          <p>Superhost3 years hosting</p>
+          <p>Superhost . 3 years hosting</p>
         </div>
       </div>
     </div>
