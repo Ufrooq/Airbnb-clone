@@ -8,10 +8,12 @@ const Navbar = () => {
 
   return (
     <section className="navbar">
-      <div className="logo">
-        <i className="fa-brands fa-airbnb"></i>
-        <h1>airbnb</h1>
-      </div>
+      <Link to="/" style={{ color: "black" }}>
+        <div className="logo">
+          <i className="fa-brands fa-airbnb"></i>
+          <h1>airbnb</h1>
+        </div>
+      </Link>
       <div className="features">
         <Link style={{ color: "black" }}>Anywhere</Link>|
         <Link style={{ color: "black" }}>Anyweek</Link>|

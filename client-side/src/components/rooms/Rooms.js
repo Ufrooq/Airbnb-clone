@@ -62,7 +62,7 @@ const Rooms = () => {
         <Host />
         <RoomInfo />
       </div>
-      <div className="description">
+      <div className="description_section">
         <ul>
           <li>
             <i class="fa-solid fa-ranking-star"></i>
@@ -80,16 +80,52 @@ const Rooms = () => {
           </li>
           <li>
             <i class="fa-solid fa-calendar-week"></i>
-            <p>Free cancellation before Oct 30.</p>
+            <div>
+              <p>Free cancellation before Oct 30.</p>
+            </div>
           </li>
         </ul>
-        <p>
+        <p className="description">
           Our Guitar House was design to offer you not only accommodation, but a
           fully unique experience. Staying at our place will give you the
           feeling of a tiny house, the view of a mountain cabin, the commodity
           and space of a bungalow with hot water, heat, WiFi and electricity.
           Here you will be on the grid but off the pavement
         </p>
+      </div>
+      <div className="services_section">
+        <h1>What this place offers</h1>
+        <div className="services">
+          <p>
+            <i class="fa-solid fa-mountain-sun"></i>
+            Mountain view
+          </p>
+          <p>
+            <i class="fa-solid fa-wifi"></i>
+            Wifi
+          </p>
+          <p>
+            <i class="fa-solid fa-ban-smoking"></i>
+            Smoking allowed
+          </p>
+          <p>
+            <i class="fa-solid fa-bell"></i>
+            Smoke alarm
+          </p>
+          <p>
+            <i class="fa-solid fa-image"></i>
+            Valley view
+          </p>
+          <p>
+            <i class="fa-solid fa-fire-burner"></i>
+            Fire pit
+          </p>
+          <p>
+            <i class="fa-solid fa-bell"></i>
+            Carbon monoxide alarm
+          </p>
+        </div>
+        <button>Show all 8 amenities</button>
       </div>
     </section>
   );

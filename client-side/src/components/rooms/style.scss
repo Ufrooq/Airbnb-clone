@@ -91,7 +91,7 @@
       border-width: 1px 0px 1px 0px;
       width: 60%;
       .header_section {
-        padding: 30px 0px;
+        padding: 20px 5px;
         display: flex;
         column-gap: 15px;
         align-items: center;
@@ -106,25 +106,91 @@
             }
             &:nth-child(2) {
               font-size: 0.9rem;
-              color: rgba(0, 0, 0, 0.674);
+              color: #222222;
             }
           }
         }
       }
     }
   }
-  .description {
+  .description_section {
     width: 60%;
+    border: 1px solid rgba(162, 161, 161, 0.674);
+    border-width: 0px 0px 1px 0px;
+    padding: 0px 0px 30px 0px;
     ul {
+      padding: 20px 5px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(162, 161, 161, 0.674);
+      border-width: 0px 0px 1px 0px;
       li {
+        display: flex;
+        align-items: center;
+        i {
+          color: #222222;
+          width: 20px;
+          font-size: 1.7rem;
+        }
+        margin: 20px 0px;
         list-style-type: none;
         display: flex;
-        column-gap: 20px;
+        column-gap: 40px;
+        > div {
+          > p {
+            &:nth-child(1) {
+              font-weight: bold;
+            }
+            &:nth-child(2) {
+              color: rgba(0, 0, 0, 0.674);
+            }
+          }
+        }
       }
     }
-    p {
+    .description {
+      padding: 0px 5px;
       text-align: justify;
       color: rgba(0, 0, 0, 0.841);
+    }
+  }
+
+  .services_section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    width: 60%;
+    h1 {
+      font-size: 1.5rem;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      row-gap: 20px;
+      p {
+        display: flex;
+        align-items: center;
+        column-gap: 20px;
+        flex: 1 50%;
+        color: #222222;
+        i {
+          width: 20px;
+          text-align: center;
+        }
+      }
+    }
+    > button {
+      padding: 7px 20px;
+      border-radius: 7px;
+      border: 1px solid #222222;
+      align-self: flex-start;
+      cursor: pointer;
+      transition: 0.5s all;
+
+      &:hover {
+        border-radius: 2px;
+        background-color: #fff;
+      }
     }
   }
 }
