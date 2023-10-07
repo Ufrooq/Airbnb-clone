@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-import RoomInfo from "./RoomInfo";
+import ReserveCard from "./ReserveCard";
 import Host from "./Host";
 
 const Rooms = () => {
@@ -60,7 +60,7 @@ const Rooms = () => {
       </div>
       <div className="middle_section">
         <Host />
-        <RoomInfo />
+        <ReserveCard />
       </div>
       <div className="description_section">
         <ul>
