@@ -9,20 +9,21 @@ import { createContext, useState } from "react";
 
 export const globalContext = createContext();
 function App() {
-  const [showModel, setShowModel] = useState(false);
+  // const [showModel, setShowModel] = useState(false);
   return (
-    <globalContext.Provider value={{ showModel, setShowModel }}>
-      <div className="App">
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Feed />} />
-            <Route path="/rooms" element={<Rooms />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </globalContext.Provider>
+    // <globalContext.Provider value={{ showModel, setShowModel }}>
+    <div className="App">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/rooms" element={<Rooms />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </div>
+    // </globalContext.Provider>
   );
 }
 

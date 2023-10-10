@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
-import { globalContext } from "../../App";
+// import { globalContext } from "../../App";
 
 const Navbar = () => {
-  const { setShowModel } = useContext(globalContext);
+  // const { setShowModel } = useContext(globalContext);
 
   return (
     <section className="navbar">
@@ -21,10 +21,8 @@ const Navbar = () => {
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div className="other">
-        <i
-          class="fa-solid fa-ellipsis-vertical"
-          onClick={() => setShowModel(true)}
-        ></i>
+        <span>umar farooq</span>
+        <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>
     </section>
   );

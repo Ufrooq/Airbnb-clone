@@ -5,22 +5,19 @@ import { globalContext } from "../../App";
 import "./style.scss";
 
 const Feed = () => {
-  const { showModel } = useContext(globalContext);
+  // const { showModel } = useContext(globalContext);
   return (
-    <>
-      {showModel ? <Login /> : null}
-      <section className="feed_section">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </section>
-    </>
+    <section className="feed_section">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </section>
   );
 };
 
