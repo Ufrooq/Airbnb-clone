@@ -5,6 +5,7 @@ import Feed from "./components/feed/Feed";
 import Footer from "./components/footer/Footer";
 import Rooms from "./components/rooms/Rooms";
 import Login from "./components/login/Login";
+import Reg from "./components/register/Reg";
 import { createContext, useState } from "react";
 
 export const globalContext = createContext();
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Reg />} />
           <Route path="/rooms" element={<Rooms />} />
         </Routes>
         <Footer />

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 const Login = () => {
@@ -22,6 +22,7 @@ const Login = () => {
           Don't have an account ?
           <span>
             <Link to="/register" style={{ color: "black" }}>
+              {" "}
               Register
             </Link>
           </span>
