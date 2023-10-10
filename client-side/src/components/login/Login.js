@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
-// import { globalContext } from "../../App";
 import "./style.scss";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="login_card">
@@ -9,7 +8,7 @@ const Login = () => {
         <h1>Login Page</h1>
       </div>
       <div className="line" />
-      <div className="info">
+      <form className="info">
         <h1>Welcome to Airbnb</h1>
         <input type="email" name="email" placeholder="Enter email" required />
         <input
@@ -19,7 +18,15 @@ const Login = () => {
           required
         />
         <button>Continue</button>
-      </div>
+        <p>
+          Don't have an account ?
+          <span>
+            <Link to="/register" style={{ color: "black" }}>
+              Register
+            </Link>
+          </span>
+        </p>
+      </form>
     </div>
   );
 };

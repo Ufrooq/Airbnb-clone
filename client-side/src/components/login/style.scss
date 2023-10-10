@@ -42,5 +42,15 @@
         background-color: #fb6782;
       }
     }
+    p {
+      text-align: center;
+      span {
+        font-weight: bold;
+        text-decoration: none;
+        :link {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
