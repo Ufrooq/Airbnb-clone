@@ -13,6 +13,7 @@ app.use("/", userRoutes);
 // dbconnection --->
 dbCon();
 
+// listening to the server --->
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
 });
