@@ -1,7 +1,8 @@
 export const registerUser = async (req, res) => {
   try {
-    console.log("user registered !!");
-    res.status(200).json("okok");
+    const { name, email, password } = req.body;
+    console.log(name, email, password);
+    res.status(200).json("okokkokokok");
   } catch (error) {
     res.status(500).json(error);
   }

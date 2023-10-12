@@ -17,14 +17,25 @@ const Reg = () => {
     e.preventDefault();
     const { name, email, password } = userData;
     try {
-      if (name && email && password) {
-        const response = await fetch("http://localhost:8000/users");
-        console.log(response);
-        if (!response.ok) {
-          return;
-        }
-        navigate("/");
+      // if (name != "" && email != "" && password != "") {
+      const response = await fetch("http://localhost:8000/users", {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
+      console.log(response);
+      if (!response.ok) {
+        return;
       }
+      navigate("/");
+      // }
     } catch (error) {
       console.log(error);
     }
