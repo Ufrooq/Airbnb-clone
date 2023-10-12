@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Reg = () => {
+  const navigate = useNavigate();
   const [userData, setuserData] = useState({
     name: "",
     email: "",
@@ -12,9 +13,21 @@ const Reg = () => {
   function handleChange(e) {
     setuserData({ ...userData, [e.target.name]: e.target.value });
   }
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    console.log(userData);
+    const { name, email, password } = userData;
+    try {
+      if (name && email && password) {
+        const response = await fetch("http://localhost:8000/users");
+        console.log(response);
+        if (!response.ok) {
+          return;
+        }
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
   return (
     <div className="register_card">
