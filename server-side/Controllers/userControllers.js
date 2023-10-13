@@ -1,5 +1,15 @@
 import userModel from "../Models/userModels.js";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+
+dotenv.config();
+
+function createToken(id) {
+  return jwt.sign({ id }, process.env.EXCESS_TOKEN, {
+    expiresIn: 60 * 60 * 24 * 3,
+  });
+}
 
 export const registerUser = async (req, res) => {
   try {
@@ -16,7 +26,18 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedpassword,
     });
-    res.status(200).json({ message: "user created successfully" });
+    delete newUser.password;
+
+    const token = createToken(newUser._id);
+
+    res
+      .cookie("jwtToken", token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: new Date(Date.now() + 3 * 1000 * 24 * 60 * 60),
+      })
+      .status(200)
+      .json({ message: "user created successfully" });
   } catch (error) {
     res.status(500).json(error);
   }

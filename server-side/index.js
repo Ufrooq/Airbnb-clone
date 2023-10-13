@@ -2,6 +2,7 @@ import express from "express";
 import userRoutes from "./Routes/userRoutes.js";
 import cors from "cors";
 import { dbCon } from "./Connections/connectDb.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -11,7 +12,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(cookieParser());
 app.use(express.json());
 app.use("/users", userRoutes);
 
