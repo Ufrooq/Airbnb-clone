@@ -16,6 +16,7 @@ const Reg = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const { name, email, password } = userData;
+    console.log(userData);
     try {
       const response = await fetch("http://localhost:8000/users/register", {
         method: "POST",
@@ -50,7 +51,7 @@ const Reg = () => {
           name="name"
           placeholder="Enter your name"
           required
-          onChange={() => handleChange}
+          onChange={handleChange}
         />
         <input
           type="email"
