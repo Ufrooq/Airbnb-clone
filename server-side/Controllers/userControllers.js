@@ -21,3 +21,13 @@ export const registerUser = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log(email, password);
+    res.status(200).json({ message: "user created successfully" });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
