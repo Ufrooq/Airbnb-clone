@@ -27,9 +27,7 @@ export const registerUser = async (req, res) => {
       password: hashedpassword,
     });
     delete newUser.password;
-
     const token = createToken(newUser._id);
-
     res
       .cookie("jwtToken", token, {
         httpOnly: true,
@@ -37,7 +35,7 @@ export const registerUser = async (req, res) => {
         maxAge: new Date(Date.now() + 3 * 1000 * 24 * 60 * 60),
       })
       .status(200)
-      .json({ message: "user created successfully" });
+      .json({ message: "user created successfully !!" });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -46,8 +44,23 @@ export const registerUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(email, password);
-    res.status(200).json({ message: "user created successfully" });
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      throw Error("Incorrect email!");
+    }
+    const isPasswordCorrect = await bcrypt.compare(password, user.password);
+    if (!isPasswordCorrect) {
+      throw Error("Incorrect Password!");
+    }
+    const token = createToken(newUser._id);
+    res
+      .cookie("jwtToken", token, {
+        httpOnly: true,
+        secure: true,
+        maxAge: new Date(Date.now() + 3 * 1000 * 24 * 60 * 60),
+      })
+      .status(200)
+      .json({ message: "user loggedIn successfully !!" });
   } catch (error) {
     res.status(500).json(error);
   }
