@@ -32,7 +32,7 @@ export const registerUser = async (req, res) => {
       .cookie("jwtToken", token, {
         httpOnly: true,
         secure: true,
-        maxAge: new Date(Date.now() + 3 * 1000 * 24 * 60 * 60),
+        maxAge: new Date(Date.now() + 1 * 1000 * 24 * 60 * 60),
       })
       .status(200)
       .json({ message: "user created successfully !!" });
