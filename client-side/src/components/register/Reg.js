@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { globalContext } from "../../App";
 
 const Reg = () => {
   const navigate = useNavigate();
+  const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const [userData, setuserData] = useState({
     name: "",
     email: "",
@@ -33,6 +35,7 @@ const Reg = () => {
       if (!response.ok) {
         return;
       }
+      setisLoggedIn(true);
       navigate("/");
     } catch (error) {
       console.log(error);

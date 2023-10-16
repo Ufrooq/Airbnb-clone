@@ -10,22 +10,23 @@ import { createContext, useState } from "react";
 
 export const globalContext = createContext();
 function App() {
-  // const [showModel, setShowModel] = useState(false);
+  const [isLoggedIn, setisLoggedIn] = useState(false);
   return (
-    // <globalContext.Provider value={{ showModel, setShowModel }}>
-    <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Feed />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Reg />} />
-          <Route path="/rooms" element={<Rooms />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
-    // </globalContext.Provider>
+    <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
+      <div className="App">
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Reg />} />
+            <Route path="/rooms" element={<Rooms />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </div>
+      //{" "}
+    </globalContext.Provider>
   );
 }
 
