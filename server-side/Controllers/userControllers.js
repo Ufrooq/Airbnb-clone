@@ -52,7 +52,7 @@ export const loginUser = async (req, res) => {
     if (!isPasswordCorrect) {
       throw Error("Incorrect Password!");
     }
-    const token = createToken(newUser._id);
+    const token = createToken(user._id);
     res
       .cookie("jwtToken", token, {
         httpOnly: true,
