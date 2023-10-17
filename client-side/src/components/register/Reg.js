@@ -22,6 +22,8 @@ const Reg = () => {
     try {
       const response = await fetch("http://localhost:8000/users/register", {
         method: "POST",
+        credentials: "include",
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },

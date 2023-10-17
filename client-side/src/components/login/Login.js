@@ -18,6 +18,8 @@ const Login = () => {
     try {
       const response = await fetch("http://localhost:8000/users/login", {
         method: "POST",
+        credentials: "include",
+        withCredentials: true,
         headers: {
           "Content-Type": "application/json",
         },
