@@ -4,8 +4,26 @@ import userModel from "../Models/userModels";
 
 dotenv.config();
 
+export const validateToken = async () => {
+  try {
+    let token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
+        if (error) {
+          throw Error("Tokken is expired !!");
+        }
+        req.user = decoded.id;
+        next();
+      });
+    } else {
+      throw Error("Token Missing !!");
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 export const checkCurrentUser = async (req, res, next) => {
-  const token = req.cookies.token;
+  const token = req.cookies.jwt;
   if (token) {
     jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
       if (error) {
@@ -19,5 +37,7 @@ export const checkCurrentUser = async (req, res, next) => {
         }
       }
     });
+  } else {
+    next();
   }
 };
