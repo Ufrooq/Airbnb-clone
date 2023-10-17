@@ -1,10 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import { globalContext } from "../../App";
 
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
+  const [username, setusername] = useState("");
+  async function getUserData() {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
+        method: "GET",
+        credentials: "include",
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setisLoggedIn(true);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   return (
     <section className="navbar">
       <Link to="/" style={{ color: "black" }}>
@@ -20,7 +40,7 @@ const Navbar = () => {
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
       <div className="other">
-        {isLoggedIn ? <span>umar farooq</span> : null}
+        {isLoggedIn ? <span>{username}</span> : null}
         <i class="fa-solid fa-ellipsis-vertical"></i>
       </div>
     </section>
