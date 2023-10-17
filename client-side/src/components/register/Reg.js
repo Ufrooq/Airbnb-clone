@@ -20,19 +20,22 @@ const Reg = () => {
     const { name, email, password } = userData;
     console.log(userData);
     try {
-      const response = await fetch("http://localhost:8000/users/register", {
-        method: "POST",
-        credentials: "include",
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/register`,
+        {
+          method: "POST",
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
       console.log(response);
       if (!response.ok) {
         return;

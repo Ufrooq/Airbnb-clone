@@ -16,7 +16,7 @@ const Login = () => {
     const { email, password } = userData;
     console.log(userData);
     try {
-      const response = await fetch("http://localhost:8000/users/login", {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
         method: "POST",
         credentials: "include",
         withCredentials: true,
