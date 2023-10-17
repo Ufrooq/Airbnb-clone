@@ -6,6 +6,7 @@ import { globalContext } from "../../App";
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const [username, setusername] = useState("");
+  const [showModel, setshowModel] = useState(false);
   async function getUserData() {
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
@@ -13,6 +14,7 @@ const Navbar = () => {
         credentials: "include",
       });
       if (response.ok) {
+        console.log(response);
         const data = await response.json();
         setisLoggedIn(true);
       }
@@ -37,11 +39,26 @@ const Navbar = () => {
         <Link style={{ color: "black" }}>Anywhere</Link>|
         <Link style={{ color: "black" }}>Anyweek</Link>|
         <Link style={{ color: "black" }}>Add guests</Link>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       <div className="other">
-        {isLoggedIn ? <span>{username}</span> : null}
         <i class="fa-solid fa-ellipsis-vertical"></i>
+        <div className="model">
+          <i class="fa-solid fa-xmark"></i>
+          <div className="action_buttons">
+            {isLoggedIn ? (
+              <>
+                <p>No user</p>
+                <button>Login</button>
+              </>
+            ) : (
+              <>
+                <p>{username}</p>
+                <button>Logout</button>
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );
