@@ -13,7 +13,10 @@ export const checkCurrentUser = async (req, res, next) => {
       } else {
         try {
           const currentUser = await userModel.findOne(decoded.id);
-        } catch (error) {}
+          res.json({ currentUser });
+        } catch (error) {
+          res.status(500).json({ message: "Server error" });
+        }
       }
     });
   }
