@@ -42,23 +42,31 @@ const Navbar = () => {
         <i className="fa-solid fa-magnifying-glass"></i>
       </div>
       <div className="other">
-        <i class="fa-solid fa-ellipsis-vertical"></i>
-        <div className="model">
-          <i class="fa-solid fa-xmark"></i>
-          <div className="action_buttons">
-            {isLoggedIn ? (
-              <>
-                <p>No user</p>
-                <button>Login</button>
-              </>
-            ) : (
-              <>
-                <p>{username}</p>
-                <button>Logout</button>
-              </>
-            )}
+        <i
+          class="fa-solid fa-ellipsis-vertical"
+          onClick={() => setshowModel(true)}
+        ></i>
+        {showModel ? (
+          <div className="model">
+            <i
+              class="fa-solid fa-xmark"
+              onClick={() => setshowModel(false)}
+            ></i>
+            <div className="action_buttons">
+              {isLoggedIn ? (
+                <>
+                  <p>No user</p>
+                  <button>Login</button>
+                </>
+              ) : (
+                <>
+                  <p>{username}</p>
+                  <button>Logout</button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </section>
   );
