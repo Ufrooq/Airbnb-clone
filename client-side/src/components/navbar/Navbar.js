@@ -15,8 +15,8 @@ const Navbar = () => {
         credentials: "include",
       });
       if (response.ok) {
-        console.log(response);
         const data = await response.json();
+        console.log(data);
         setisLoggedIn(true);
       }
     } catch (error) {
@@ -35,7 +35,7 @@ const Navbar = () => {
 
   useEffect(() => {
     getUserData();
-  }, []);
+  }, [isLoggedIn]);
 
   return (
     <section className="navbar">
