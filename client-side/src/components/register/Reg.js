@@ -21,7 +21,7 @@ const Reg = () => {
     console.log(userData);
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/register`,
+        `${process.env.REACT_APP_BASE_URL}/users/register`,
         {
           method: "POST",
           credentials: "include",

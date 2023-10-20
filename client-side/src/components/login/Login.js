@@ -14,20 +14,22 @@ const Login = () => {
   async function handleSubmit(e) {
     e.preventDefault();
     const { email, password } = userData;
-    console.log(userData);
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
-        method: "POST",
-        credentials: "include",
-        withCredentials: true,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/users/login`,
+        {
+          method: "POST",
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
       console.log(response);
       if (!response.ok) {
         return;
