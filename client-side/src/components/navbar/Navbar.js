@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./style.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { globalContext } from "../../App";
 
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const [username, setusername] = useState("");
   const [showModel, setshowModel] = useState(false);
+  const navigate = useNavigate();
   async function getUserData() {
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
@@ -21,6 +22,15 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function handleNavigation(par) {
+    setshowModel(false);
+    if (par == "in") {
+      navigate("/login");
+      return;
+    }
+    navigate("/register");
   }
 
   useEffect(() => {
@@ -55,13 +65,16 @@ const Navbar = () => {
             <div className="action_buttons">
               {isLoggedIn ? (
                 <>
-                  <p>No user</p>
-                  <button>Login</button>
+                  <p>{username}</p>
+                  <button>Logout</button>
                 </>
               ) : (
                 <>
-                  <p>{username}</p>
-                  <button>Logout</button>
+                  <p>No user</p>
+                  <button onClick={() => handleNavigation("in")}>Login</button>
+                  <button onClick={() => handleNavigation("reg")}>
+                    Register
+                  </button>
                 </>
               )}
             </div>
