@@ -66,6 +66,7 @@ const Navbar = () => {
               {isLoggedIn ? (
                 <>
                   <p>{username}</p>
+                  <Link to="/profile">Profile</Link>
                   <button>Logout</button>
                 </>
               ) : (

@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { globalContext } from "../../App";
+
 const Login = () => {
+  const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const navigate = useNavigate();
   const [userData, setuserData] = useState({
     email: "",
@@ -34,6 +37,7 @@ const Login = () => {
       if (!response.ok) {
         return;
       }
+      setisLoggedIn(true);
       navigate("/");
     } catch (error) {
       console.log(error);
