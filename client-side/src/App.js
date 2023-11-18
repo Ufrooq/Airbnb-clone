@@ -12,6 +12,32 @@ import Profile from "./components/profile/Profile";
 export const globalContext = createContext();
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
+
+  const isLoggedInHandler = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
+        method: "GET",
+        credentials: "include",
+      });
+      return response.ok;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      try {
+        const isLoggedIn = await isLoggedInHandler();
+        setisLoggedIn(isLoggedIn);
+      } catch (error) {
+        console.log(error.message);
+        setisLoggedIn(false);
+      }
+    };
+    checkLoggedIn();
+  }, []);
+
   return (
     <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
       <div className="App">
