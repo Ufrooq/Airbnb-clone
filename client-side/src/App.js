@@ -25,18 +25,18 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      try {
-        const isLoggedIn = await isLoggedInHandler();
-        setisLoggedIn(isLoggedIn);
-      } catch (error) {
-        console.log(error.message);
-        setisLoggedIn(false);
-      }
-    };
-    checkLoggedIn();
-  }, []);
+  // useEffect(() => {
+  //   const checkLoggedIn = async () => {
+  //     try {
+  //       const isLoggedIn = await isLoggedInHandler();
+  //       setisLoggedIn(isLoggedIn);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //       setisLoggedIn(false);
+  //     }
+  //   };
+  //   checkLoggedIn();
+  // }, []);
 
   return (
     <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
