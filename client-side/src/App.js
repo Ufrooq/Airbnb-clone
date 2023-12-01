@@ -6,7 +6,7 @@ import Footer from "./components/footer/Footer";
 import Rooms from "./components/rooms/Rooms";
 import Login from "./components/login/Login";
 import Reg from "./components/register/Reg";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import Profile from "./components/profile/Profile";
 
 export const globalContext = createContext();
@@ -19,24 +19,26 @@ function App() {
         method: "GET",
         credentials: "include",
       });
+      console.log(response);
       return response.ok;
     } catch (error) {
       console.error(error);
     }
   };
 
-  // useEffect(() => {
-  //   const checkLoggedIn = async () => {
-  //     try {
-  //       const isLoggedIn = await isLoggedInHandler();
-  //       setisLoggedIn(isLoggedIn);
-  //     } catch (error) {
-  //       console.log(error.message);
-  //       setisLoggedIn(false);
-  //     }
-  //   };
-  //   checkLoggedIn();
-  // }, []);
+  useEffect(() => {
+    const checkLoggedIn = async () => {
+      try {
+        const isLoggedIn = await isLoggedInHandler();
+        console.log(isLoggedIn);
+        setisLoggedIn(isLoggedIn);
+      } catch (error) {
+        console.log(error.message);
+        setisLoggedIn(false);
+      }
+    };
+    checkLoggedIn();
+  }, []);
 
   return (
     <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
