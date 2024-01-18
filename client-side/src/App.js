@@ -7,7 +7,7 @@ import Rooms from "./components/rooms/Rooms";
 import Login from "./components/login/Login";
 import Reg from "./components/register/Reg";
 import { createContext, useEffect, useState } from "react";
-import Profile from "./components/profile/Profile";
+import Account from "./components/account/Account";
 
 export const globalContext = createContext();
 function App() {
@@ -50,7 +50,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
             <Route path="/rooms" element={<Rooms />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/account" element={<Account />}>
+              {/* <Route path="/profile" element={<Profile />} />
+              <Route path="/accomodations" element={<Profile />} />
+              <Route path="/bookings" element={<Profile />} /> */}
+            </Route>
           </Routes>
           <Footer />
         </BrowserRouter>

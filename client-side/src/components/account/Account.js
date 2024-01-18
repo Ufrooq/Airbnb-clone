@@ -2,7 +2,7 @@ import React from "react";
 import avatar from "../../assets/avatar.png";
 import "./style.scss";
 
-const Profile = () => {
+const Account = () => {
   return (
     <section className="profile_section">
       <div className="profile_card">
@@ -23,4 +23,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Account;

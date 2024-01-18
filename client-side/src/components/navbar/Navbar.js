@@ -65,7 +65,7 @@ const Navbar = () => {
             <div className="action_buttons">
               {isLoggedIn ? (
                 <>
-                  <Link to="/profile" style={{ color: "black" }}>
+                  <Link to="/account" style={{ color: "black" }}>
                     {userdata.currentUser.name}'s Profile
                   </Link>
                   <button>Logout</button>
