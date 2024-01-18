@@ -1,15 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Account = () => {
   return (
-    <section className="profile_section">
+    <section className="account_section">
       <br />
-      <Link to="account/perInfo">Personal Info</Link>
+      <Link to="perInfo">Personal Info</Link>
       <br />
-      <Link to="account/accomodations">Accomodations</Link>
+      <Link to="accomodations">Accomodations</Link>
       <br />
-      <Link to="account/bookings">Bookings</Link>
+      <Link to="bookings">Bookings</Link>
+      <Outlet />
     </section>
   );
 };
