@@ -8,6 +8,9 @@ import Login from "./components/login/Login";
 import Reg from "./components/register/Reg";
 import { createContext, useEffect, useState } from "react";
 import Account from "./components/account/Account";
+import PerInfo from "./components/account/PerInfo";
+import Accomodations from "./components/account/Accomodations";
+import Bookings from "./components/account/Bookings";
 
 export const globalContext = createContext();
 function App() {
@@ -51,9 +54,9 @@ function App() {
             <Route path="/register" element={<Reg />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/account" element={<Account />}>
-              {/* <Route path="/profile" element={<Profile />} />
-              <Route path="/accomodations" element={<Profile />} />
-              <Route path="/bookings" element={<Profile />} /> */}
+              <Route path="/perInfo" element={<PerInfo />} />
+              <Route path="/accomodations" element={<Accomodations />} />
+              <Route path="/bookings" element={<Bookings />} />
             </Route>
           </Routes>
           <Footer />
