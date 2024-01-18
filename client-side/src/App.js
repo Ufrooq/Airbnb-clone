@@ -54,9 +54,9 @@ function App() {
             <Route path="/register" element={<Reg />} />
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/account" element={<Account />}>
-              <Route path="/perInfo" element={<PerInfo />} />
-              <Route path="/accomodations" element={<Accomodations />} />
-              <Route path="/bookings" element={<Bookings />} />
+              <Route path="perInfo" element={<PerInfo />} />
+              <Route path="accomodations" element={<Accomodations />} />
+              <Route path="bookings" element={<Bookings />} />
             </Route>
           </Routes>
           <Footer />
