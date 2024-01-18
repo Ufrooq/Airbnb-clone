@@ -7,12 +7,14 @@ dotenv.config();
 export const validateToken = async () => {
   try {
     let token = req.cookies.jwt;
+    console.log(token);
     if (token) {
       jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
         if (error) {
           throw Error("Tokken is expired !!");
         }
         req.user = decoded.id;
+
         next();
       });
     } else {
@@ -30,9 +32,10 @@ export const checkCurrentUser = async (req, res, next) => {
         console.log(error.message);
       } else {
         try {
-          const currentUser = await userModel.findOne(decoded.id);
+          const currentUser = await userModel.findById(decoded.id);
           res.json({ currentUser });
         } catch (error) {
+          console.log("currentUser");
           res.status(500).json({ message: "Server error" });
         }
       }

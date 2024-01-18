@@ -5,18 +5,18 @@ import { globalContext } from "../../App";
 
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
-  const [username, setusername] = useState("");
+  const [userdata, setuserdata] = useState();
   const [showModel, setshowModel] = useState(false);
   const navigate = useNavigate();
   async function getUserData() {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/users`, {
         method: "GET",
         credentials: "include",
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        setuserdata(data);
         setisLoggedIn(true);
       }
     } catch (error) {
@@ -65,8 +65,9 @@ const Navbar = () => {
             <div className="action_buttons">
               {isLoggedIn ? (
                 <>
-                  <p>{username}</p>
-                  <Link to="/profile">Profile</Link>
+                  <Link to="/profile" style={{ color: "black" }}>
+                    {userdata.currentUser.name}'s Profile
+                  </Link>
                   <button>Logout</button>
                 </>
               ) : (

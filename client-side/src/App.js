@@ -13,32 +13,32 @@ export const globalContext = createContext();
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
-  const isLoggedInHandler = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/`, {
-        method: "GET",
-        credentials: "include",
-      });
-      console.log(response);
-      return response.ok;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const isLoggedInHandler = async () => {
+  // try {
+  //   const response = await fetch(`${process.env.REACT_APP_BASE_URL}/users`, {
+  //     method: "GET",
+  //     credentials: "include",
+  //   });
+  //   console.log(response);
+  //   return response.ok;
+  // } catch (error) {
+  //   console.error(error);
+  // }
+  // };
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      try {
-        const isLoggedIn = await isLoggedInHandler();
-        console.log(isLoggedIn);
-        setisLoggedIn(isLoggedIn);
-      } catch (error) {
-        console.log(error.message);
-        setisLoggedIn(false);
-      }
-    };
-    checkLoggedIn();
-  }, []);
+  // useEffect(() => {
+  //   const checkLoggedIn = async () => {
+  //     try {
+  //       const isLoggedIn = await isLoggedInHandler();
+  //       console.log(isLoggedIn);
+  //       setisLoggedIn(isLoggedIn);
+  //     } catch (error) {
+  //       console.log(error.message);
+  //       setisLoggedIn(false);
+  //     }
+  //   };
+  //   checkLoggedIn();
+  // }, []);
 
   return (
     <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>

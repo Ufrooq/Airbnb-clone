@@ -4,7 +4,7 @@ import { checkCurrentUser } from "../Middlewares/validateToken.js";
 
 const router = Router();
 
-router.get("*", checkCurrentUser);
+router.get("/", checkCurrentUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 // router.post("/avatar", validateUser, setAvatar);
