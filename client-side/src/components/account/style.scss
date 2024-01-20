@@ -42,3 +42,27 @@
     }
   }
 }
+
+.accomodations_form {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    .photo {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      .link_photo {
+        display: flex;
+        align-items: center;
+      }
+      .upload_photo {
+        button {
+          padding: 10px;
+          width: 140px;
+        }
+      }
+    }
+  }
+}
