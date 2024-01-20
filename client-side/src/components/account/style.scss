@@ -44,6 +44,7 @@
 }
 
 .accomodations_form {
+  padding: 20px 0px;
   form {
     display: flex;
     flex-direction: column;
@@ -63,6 +64,15 @@
           width: 140px;
         }
       }
+    }
+    .perks {
+      .items {
+        display: flex;
+        gap: 10px;
+      }
+    }
+    .time {
+      display: flex;
     }
   }
 }
