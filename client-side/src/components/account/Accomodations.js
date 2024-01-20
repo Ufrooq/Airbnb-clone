@@ -41,6 +41,63 @@ const Accomodations = () => {
               <button>upload from your device</button>
             </div>
           </div>
+          <div>
+            <h2>Description</h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta,
+              ipsa?
+            </p>
+            <textarea name="" id="" cols="30" rows="5"></textarea>
+          </div>
+          <div className="perks">
+            <h2>Perks</h2>
+            <label>
+              <input type="checkbox" />
+              <span>wifi</span>
+            </label>
+            <label>
+              <input type="checkbox" />
+              <span>wifi</span>
+            </label>
+            <label>
+              <input type="checkbox" />
+              <span>wifi</span>
+            </label>
+            <label>
+              <input type="checkbox" />
+              <span>wifi</span>
+            </label>
+            <label>
+              <input type="checkbox" />
+              <span>wifi</span>
+            </label>
+          </div>
+          <div className="extraInfo">
+            <h2>Extra info</h2>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta,
+              ipsa?
+            </p>
+            <input type="text" />
+          </div>
+          <div className="time">
+            <div className="in_time">
+              <h2>Extra info</h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Soluta, ipsa?
+              </p>
+              <input type="text" />
+            </div>
+            <div className="out_time">
+              <h2>Extra info</h2>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Soluta, ipsa?
+              </p>
+              <input type="text" />
+            </div>
+          </div>
         </form>
       ) : (
         <MyAccList />
