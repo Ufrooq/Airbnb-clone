@@ -16,3 +16,14 @@ export const upload = async (req, res) => {
     res.status(400).json({ error: error });
   }
 };
+
+export const uploadPhotos = async (req, res) => {
+  try {
+    const { photos } = req.body;
+    console.log(photos);
+    res.status(201).json("ok");
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error });
+  }
+};

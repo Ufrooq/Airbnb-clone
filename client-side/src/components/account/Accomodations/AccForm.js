@@ -6,7 +6,7 @@ const AccForm = () => {
     title: "",
     address: "",
     link: "",
-    photos: [],
+    photos: null,
     description: "",
     perks: [],
     extraInfo: "",
@@ -41,7 +41,31 @@ const AccForm = () => {
       );
       const data = await response.json();
       setimagesFromBackEnd([...imagesFromBackEnd, data]);
-      console.log(imagesFromBackEnd);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlePhotosData = async (files) => {
+    // send data to server and get response back
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/users/photosMedia`,
+        {
+          method: "POST",
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            photos: files,
+          }),
+        }
+      );
+      console.log(response);
+      // const data = await response.json();
+      // console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -51,6 +75,11 @@ const AccForm = () => {
     handleServerData(userData.link);
   };
 
+  const onImageChange = (e) => {
+    const files = e.target.files;
+    handlePhotosData(files);
+    setuserData({ ...userData, photos: files });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     // send data to server here
@@ -111,7 +140,10 @@ const AccForm = () => {
           <button onClick={handleConvertLink}>add photo</button>
         </div>
         <div className="upload_photo">
-          <button>upload from your device</button>
+          <label>
+            upload from your device
+            <input type="file" onChange={onImageChange} />
+          </label>
         </div>
       </div>
       <div>
