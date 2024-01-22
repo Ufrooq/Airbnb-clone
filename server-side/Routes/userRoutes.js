@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { loginUser, registerUser } from "../Controllers/userControllers.js";
 import { checkCurrentUser } from "../Middlewares/validateToken.js";
-import { upload } from "../Uploads/uploadMedia.js";
+import { upload } from "../Controllers/uploadMedia.js";
 
 const router = Router();
 

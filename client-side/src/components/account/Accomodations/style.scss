@@ -12,6 +12,9 @@
       .link_photo {
         display: flex;
         align-items: center;
+        img {
+          width: 20%;
+        }
       }
       .upload_photo {
         button {

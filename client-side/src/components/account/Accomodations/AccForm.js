@@ -14,6 +14,7 @@ const AccForm = () => {
     checkOut: "",
     maxGuests: 1,
   });
+  const [imageFromBackEnd, setimageFromBackEnd] = useState([]);
 
   let name, val;
   const handleChange = (e) => {
@@ -39,6 +40,9 @@ const AccForm = () => {
           }),
         }
       );
+      const data = await response.json();
+      console.log(data);
+      setimageFromBackEnd(data);
     } catch (error) {
       console.log(error);
     }
@@ -88,6 +92,18 @@ const AccForm = () => {
           ipsa?
         </p>
         <div className="link_photo">
+          <br />
+          {imageFromBackEnd != "" && (
+            <>
+              <p>image : </p>
+              <img
+                src={`${process.env.REACT_APP_BASE_URL}/Uploads/${imageFromBackEnd}`}
+                alt=""
+              />
+              <br />
+            </>
+          )}
+
           <input
             type="text"
             name="link"

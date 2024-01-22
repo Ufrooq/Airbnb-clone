@@ -3,9 +3,14 @@ import userRoutes from "./Routes/userRoutes.js";
 import cors from "cors";
 import { dbCon } from "./Connections/connectDb.js";
 import cookieParser from "cookie-parser";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
 const app = express();
 const port = process.env.PORT || 8000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+console.log(__dirname);
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -14,6 +19,7 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
+app.use("/Uploads", express.static(__dirname + "/Uploads"));
 app.use("/users", userRoutes);
 
 // dbconnection --->
