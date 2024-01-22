@@ -14,8 +14,7 @@ const AccForm = () => {
     checkOut: "",
     maxGuests: 1,
   });
-  const [imageFromBackEnd, setimageFromBackEnd] = useState([]);
-
+  const [imagesFromBackEnd, setimagesFromBackEnd] = useState([]);
   let name, val;
   const handleChange = (e) => {
     name = e.target.name;
@@ -41,8 +40,8 @@ const AccForm = () => {
         }
       );
       const data = await response.json();
-      console.log(data);
-      setimageFromBackEnd(data);
+      setimagesFromBackEnd([...imagesFromBackEnd, data]);
+      console.log(imagesFromBackEnd);
     } catch (error) {
       console.log(error);
     }
@@ -93,17 +92,15 @@ const AccForm = () => {
         </p>
         <div className="link_photo">
           <br />
-          {imageFromBackEnd != "" && (
-            <>
-              <p>image : </p>
+          {imagesFromBackEnd.length > 0 &&
+            imagesFromBackEnd.map((image, key) => (
               <img
-                src={`${process.env.REACT_APP_BASE_URL}/Uploads/${imageFromBackEnd}`}
+                key={key}
+                src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
                 alt=""
               />
-              <br />
-            </>
-          )}
-
+            ))}
+          <br />
           <input
             type="text"
             name="link"
