@@ -19,8 +19,7 @@ export const upload = async (req, res) => {
 
 export const uploadPhotos = async (req, res) => {
   try {
-    const { photos } = req.body;
-    console.log(photos);
+    console.log(req.files);
     res.status(201).json("ok");
   } catch (error) {
     console.log(error);

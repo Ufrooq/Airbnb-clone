@@ -49,23 +49,23 @@ const AccForm = () => {
   const handlePhotosData = async (files) => {
     // send data to server and get response back
     try {
+
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append(`photos`, file)
+      });
       const response = await fetch(
         `${process.env.REACT_APP_BASE_URL}/users/photosMedia`,
         {
           method: "POST",
           credentials: "include",
           withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            photos: files,
-          }),
+          body: formData
         }
       );
       console.log(response);
-      // const data = await response.json();
-      // console.log(data);
+      const data = await response.json();
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -77,7 +77,7 @@ const AccForm = () => {
 
   const onImageChange = (e) => {
     const files = e.target.files;
-    handlePhotosData(files);
+    handlePhotosData([...files]);
     setuserData({ ...userData, photos: files });
   };
   const handleSubmit = (e) => {
@@ -86,7 +86,7 @@ const AccForm = () => {
     console.log(userData);
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}   >
       <div>
         <h2>Title</h2>
         <p>
@@ -142,7 +142,7 @@ const AccForm = () => {
         <div className="upload_photo">
           <label>
             upload from your device
-            <input type="file" onChange={onImageChange} />
+            <input type="file" multiple="multiple" onChange={onImageChange} />
           </label>
         </div>
       </div>
