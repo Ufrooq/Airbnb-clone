@@ -1,4 +1,6 @@
 import download from "image-downloader";
+import fs from "fs";
+import path from "path";
 
 export const upload = async (req, res) => {
   try {
@@ -19,7 +21,18 @@ export const upload = async (req, res) => {
 
 export const uploadPhotos = async (req, res) => {
   try {
-    console.log(req.files);
+    const folderPath = "./Uploads";
+    const files = req.files;
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath, { recursive: true });
+    }
+    files.forEach((file) => {
+      const sourcePath = file.path;
+      const destinationPath = path.join(folderPath, file.originalname);
+      fs.copyFileSync(sourcePath, destinationPath);
+
+    });
+
     res.status(201).json("ok");
   } catch (error) {
     console.log(error);
