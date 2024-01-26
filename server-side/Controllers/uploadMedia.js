@@ -33,8 +33,11 @@ export const uploadPhotos = async (req, res) => {
       fs.unlinkSync(sourcePath);
 
     });
+    const filesBackToClient = files.map((file) => {
+      return file.originalname;
+    })
 
-    res.status(201).json("ok");
+    res.status(201).json(filesBackToClient);
   } catch (error) {
     console.log(error);
     res.status(400).json({ error: error });
