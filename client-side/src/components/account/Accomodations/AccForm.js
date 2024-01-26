@@ -8,12 +8,28 @@ const AccForm = () => {
     link: "",
     photos: null,
     description: "",
-    perks: [],
+    perks: {
+      wifi: false,
+      park: false,
+      tv: false,
+      radio: false,
+      pet: false,
+      entrance: false,
+    },
     extraInfo: "",
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
   });
+  const [checkBoxes, setcheckBoxes] = useState({
+    wifi: false,
+    park: false,
+    tv: false,
+    radio: false,
+    pet: false,
+    entrance: false,
+  });
+
   const [imagesFromBackEnd, setimagesFromBackEnd] = useState([]);
   let name, val;
   const handleChange = (e) => {
@@ -80,6 +96,12 @@ const AccForm = () => {
     handlePhotosData([...files]);
     setuserData({ ...userData, photos: files });
   };
+
+
+  const handleCheckboxes = (e) => {
+    setuserData({ ...userData, perks: { ...userData.perks, [e.target.name]: !userData.perks[e.target.name] } })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // send data to server here
@@ -164,27 +186,27 @@ const AccForm = () => {
         <h2>Perks</h2>
         <div className="items">
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="wifi" onChange={handleCheckboxes} />
             <span>wifi</span>
           </label>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="park" onChange={handleCheckboxes} />
             <span>free park</span>
           </label>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="tv" onChange={handleCheckboxes} />
             <span>Tv</span>
           </label>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="radio" onChange={handleCheckboxes} />
             <span>radio</span>
           </label>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="pet" onChange={handleCheckboxes} />
             <span>Pet</span>
           </label>
           <label>
-            <input type="checkbox" />
+            <input type="checkbox" name="entrance" onChange={handleCheckboxes} />
             <span>Private Entrance</span>
           </label>
         </div>
