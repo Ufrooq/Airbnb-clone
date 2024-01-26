@@ -30,6 +30,7 @@ export const uploadPhotos = async (req, res) => {
       const sourcePath = file.path;
       const destinationPath = path.join(folderPath, file.originalname);
       fs.copyFileSync(sourcePath, destinationPath);
+      fs.unlinkSync(sourcePath);
 
     });
 
