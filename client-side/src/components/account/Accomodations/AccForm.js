@@ -21,14 +21,6 @@ const AccForm = () => {
     checkOut: "",
     maxGuests: 1,
   });
-  const [checkBoxes, setcheckBoxes] = useState({
-    wifi: false,
-    park: false,
-    tv: false,
-    radio: false,
-    pet: false,
-    entrance: false,
-  });
 
   const [imagesFromBackEnd, setimagesFromBackEnd] = useState([]);
   let name, val;
@@ -42,7 +34,7 @@ const AccForm = () => {
     // send data to server and get response back
     try {
       const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/users/uploadMedia`,
+        `${process.env.REACT_APP_BASE_URL}/users/linkMedia`,
         {
           method: "POST",
           credentials: "include",
@@ -102,10 +94,33 @@ const AccForm = () => {
     setuserData({ ...userData, perks: { ...userData.perks, [e.target.name]: !userData.perks[e.target.name] } })
   }
 
+  const sendDataToServer = async (data) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/users/places`,
+        {
+          method: "POST",
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data
+          })
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const data = { ...userData, photos: imagesFromBackEnd }
     // send data to server here
-    console.log(userData);
+    sendDataToServer(data);
   };
   return (
     <form onSubmit={handleSubmit}   >

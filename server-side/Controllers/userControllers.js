@@ -65,3 +65,14 @@ export const loginUser = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+
+export const registerPlace = async (req, res) => {
+  try {
+    const { data } = req.body;
+    console.log(data);
+    res.status(200).json({ message: "Place added successfully !!" });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
