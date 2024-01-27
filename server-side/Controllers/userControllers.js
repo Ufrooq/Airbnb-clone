@@ -2,6 +2,8 @@ import userModel from "../Models/userModels.js";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
+import placeModel from "../Models/placeModel.js";
+import perksModel from "../Models/perksModel.js";
 
 dotenv.config();
 
@@ -69,9 +71,41 @@ export const loginUser = async (req, res) => {
 
 export const registerPlace = async (req, res) => {
   try {
-    const { data } = req.body;
-    console.log(data);
-    res.status(200).json({ message: "Place added successfully !!" });
+    const { title, address, link, photos, description,
+      perks, extraInfo, checkIn, checkOut, maxGuests } = req.body.data;
+    console.log(req.body);
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
+        if (error) {
+          console.log(error.message);
+          return;
+        } else {
+          const newPlace = await placeModel.create({
+            owner: decoded.id,
+            title,
+            address,
+            photos,
+            description,
+            extraInfo,
+            checkIn,
+            checkOut,
+            maxGuests
+          });
+          const { wifi, park, tv, radio, pet, entrance } = perks;
+          const perksFor_NewPlace = await perksModel.create({
+            placeId: newPlace._id,
+            wifi,
+            park,
+            tv,
+            radio,
+            pet,
+            entrance
+          })
+          res.status(200).json({ message: "Place added successfully !!" });
+        }
+      });
+    }
   } catch (error) {
     res.status(500).json(error);
   }

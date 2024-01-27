@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.scss";
 
 const AccForm = () => {
+  const navigate = useNavigate();
   const [userData, setuserData] = useState({
     title: "",
     address: "",
     link: "",
-    photos: null,
+    photos: [],
     description: "",
     perks: {
       wifi: false,
@@ -17,8 +19,8 @@ const AccForm = () => {
       entrance: false,
     },
     extraInfo: "",
-    checkIn: "",
-    checkOut: "",
+    checkIn: 0,
+    checkOut: 0,
     maxGuests: 1,
   });
 
@@ -30,7 +32,7 @@ const AccForm = () => {
     setuserData({ ...userData, [name]: val });
   };
 
-  const handleServerData = async (link) => {
+  const handleLinkPhotos = async (link) => {
     // send data to server and get response back
     try {
       const response = await fetch(
@@ -48,6 +50,7 @@ const AccForm = () => {
         }
       );
       const data = await response.json();
+      console.log(data);
       setimagesFromBackEnd([...imagesFromBackEnd, data]);
     } catch (error) {
       console.log(error);
@@ -80,7 +83,7 @@ const AccForm = () => {
   };
   const handleConvertLink = (e) => {
     e.preventDefault();
-    handleServerData(userData.link);
+    handleLinkPhotos(userData.link);
   };
 
   const onImageChange = (e) => {
@@ -110,7 +113,9 @@ const AccForm = () => {
           })
         }
       );
-      console.log(response);
+      if (response.ok) {
+        navigate(-1);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -163,7 +168,7 @@ const AccForm = () => {
               <img
                 key={key}
                 src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
-                alt=""
+                alt="image"
               />
             ))}
           <br />
@@ -261,7 +266,7 @@ const AccForm = () => {
         <div className="guests">
           <h2>Max Guests Allowed</h2>
           <input
-            type="text"
+            type="number"
             name="maxGuests"
             value={userData.maxGuests}
             onChange={handleChange}

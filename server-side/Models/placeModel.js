@@ -1,5 +1,4 @@
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const placeSchema = new mongoose.Schema({
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -9,12 +8,10 @@ const placeSchema = new mongoose.Schema({
   address: String,
   photos: [String],
   description: String,
-  perks: [String],
   extraInfo: String,
   checkIn: Number,
   checkOut: Number,
   maxGuests: Number,
-  price: Number,
 });
 
 const placeModel = mongoose.model("Place", placeSchema);
