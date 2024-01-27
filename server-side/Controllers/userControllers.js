@@ -73,7 +73,7 @@ export const registerPlace = async (req, res) => {
   try {
     const { title, address, link, photos, description,
       perks, extraInfo, checkIn, checkOut, maxGuests } = req.body.data;
-    console.log(req.body);
+
     const token = req.cookies.jwt;
     if (token) {
       jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
@@ -109,4 +109,24 @@ export const registerPlace = async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
-}
+};
+
+
+export const getPlaces = async (req, res) => {
+  try {
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
+        if (error) {
+          console.log(error.message);
+          return;
+        } else {
+          const allPlaces = await placeModel.find({ owner: decoded.id })
+          res.status(200).json(allPlaces);
+        }
+      });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};

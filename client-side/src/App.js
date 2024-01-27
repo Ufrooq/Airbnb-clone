@@ -9,9 +9,9 @@ import Reg from "./components/register/Reg";
 import { createContext, useEffect, useState } from "react";
 import Account from "./components/account/Account";
 import PerInfo from "./components/account/PerInfo";
-import Accomodations from "./components/account/Accomodations/Accomodations";
 import Bookings from "./components/account/Bookings";
-import AccForm from "./components/account/Accomodations/AccForm";
+import AccForm from "./components/account/Accomodation/AccForm";
+import AccomodationPage from "./components/account/Accomodation/AccomodationPage";
 
 export const globalContext = createContext();
 function App() {
@@ -56,7 +56,7 @@ function App() {
             <Route path="/rooms" element={<Rooms />} />
             <Route path="/account" element={<Account />}>
               <Route path="perInfo" element={<PerInfo />} />
-              <Route path="accomodations" element={<Accomodations />}>
+              <Route path="accomodations" element={<AccomodationPage />}>
                 <Route path="new" element={<AccForm />} />
               </Route>
               <Route path="bookings" element={<Bookings />} />
