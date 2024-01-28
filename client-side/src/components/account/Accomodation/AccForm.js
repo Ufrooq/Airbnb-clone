@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
 import "./style.scss";
 
 const AccForm = () => {
   const { id } = useParams();
-  console.log(id);
   const navigate = useNavigate();
   const [userData, setuserData] = useState({
     title: "",
@@ -129,6 +129,28 @@ const AccForm = () => {
     // send data to server here
     sendDataToServer(data);
   };
+
+
+
+
+  const getFormData = async () => {
+    try {
+
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    if (!id)
+      return;
+
+    getFormData();
+  }, [id])
+
   return (
     <form onSubmit={handleSubmit}   >
       <div>

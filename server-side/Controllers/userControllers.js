@@ -130,3 +130,14 @@ export const getPlaces = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+export const getPlacesById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const placeData = await placeModel.findById(id);
+    const perksData = await perksModel.find({ placeId: placeData._id })
+    res.status(200).json({ placeData: placeData, perksData: perksData });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};

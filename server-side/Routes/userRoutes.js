@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getPlaces, loginUser, registerPlace, registerUser } from "../Controllers/userControllers.js";
+import { getPlaces, getPlacesById, loginUser, registerPlace, registerUser } from "../Controllers/userControllers.js";
 import { checkCurrentUser } from "../Middlewares/validateToken.js";
 import { upload, uploadPhotos } from "../Controllers/uploadMedia.js";
 import multer from "multer";
@@ -12,6 +12,7 @@ router.post("/login", loginUser);
 router.post("/linkMedia", upload);
 router.post("/places", registerPlace);
 router.get("/places", getPlaces);
+router.get("/places/:id", getPlacesById);
 router.post("/photosMedia", photosMiddleWare.array("photos", 50), uploadPhotos);
 
 // router.post("/avatar", validateUser, setAvatar);
