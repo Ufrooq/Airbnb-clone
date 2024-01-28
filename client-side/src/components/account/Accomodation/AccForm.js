@@ -99,6 +99,51 @@ const AccForm = () => {
     setuserData({ ...userData, perks: { ...userData.perks, [e.target.name]: !userData.perks[e.target.name] } })
   }
 
+  const getFormData = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`
+      );
+      // destructuring response fom server -->
+      const { placeData, perksData } = response.data;
+
+      // destructuring placeData fom server -->
+      const { title, address, link, photos, description,
+        extraInfo, checkIn, checkOut, maxGuests } = placeData;
+
+      // destructuring perksData fom server -->
+      const { wifi, park, tv, radio, pet, entrance } = perksData;
+
+      const perksToUpdate = {
+        wifi: wifi || false,
+        park: park || false,
+        tv: tv || false,
+        radio: radio || false,
+        pet: pet || false,
+        entrance: entrance || false,
+      };
+
+      const dataToUpdate = {
+        title: title,
+        address: address,
+        link: "",
+        photos: photos,
+        description: description,
+        perks: perksToUpdate,
+        extraInfo: extraInfo,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        maxGuests: maxGuests
+      };
+
+      setuserData(dataToUpdate);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
   const sendDataToServer = async (data) => {
     try {
       const response = await fetch(
@@ -125,25 +170,13 @@ const AccForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { ...userData, photos: imagesFromBackEnd }
+    // const data = { ...userData, photos: imagesFromBackEnd }
+    console.log(userData);
     // send data to server here
-    sendDataToServer(data);
+    // sendDataToServer(data);
   };
 
 
-
-
-  const getFormData = async () => {
-    try {
-
-      const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
   useEffect(() => {
     if (!id)
       return;
@@ -230,27 +263,27 @@ const AccForm = () => {
         <h2>Perks</h2>
         <div className="items">
           <label>
-            <input type="checkbox" name="wifi" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.wifi} name="wifi" onChange={handleCheckboxes} />
             <span>wifi</span>
           </label>
           <label>
-            <input type="checkbox" name="park" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.park} name="park" onChange={handleCheckboxes} />
             <span>free park</span>
           </label>
           <label>
-            <input type="checkbox" name="tv" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.tv} name="tv" onChange={handleCheckboxes} />
             <span>Tv</span>
           </label>
           <label>
-            <input type="checkbox" name="radio" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.radio} name="radio" onChange={handleCheckboxes} />
             <span>radio</span>
           </label>
           <label>
-            <input type="checkbox" name="pet" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.pet} name="pet" onChange={handleCheckboxes} />
             <span>Pet</span>
           </label>
           <label>
-            <input type="checkbox" name="entrance" onChange={handleCheckboxes} />
+            <input type="checkbox" checked={userData.perks.entrance} name="entrance" onChange={handleCheckboxes} />
             <span>Private Entrance</span>
           </label>
         </div>
