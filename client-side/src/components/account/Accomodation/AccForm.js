@@ -135,8 +135,8 @@ const AccForm = () => {
         checkOut: checkOut,
         maxGuests: maxGuests
       };
-
       setuserData(dataToUpdate);
+      setimagesFromBackEnd(userData.photos);
     } catch (error) {
       console.log(error);
     }
@@ -263,27 +263,57 @@ const AccForm = () => {
         <h2>Perks</h2>
         <div className="items">
           <label>
-            <input type="checkbox" checked={userData.perks.wifi} name="wifi" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.wifi}
+              name="wifi"
+              onChange={handleCheckboxes}
+            />
             <span>wifi</span>
           </label>
           <label>
-            <input type="checkbox" checked={userData.perks.park} name="park" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.park}
+              name="park"
+              onChange={handleCheckboxes}
+            />
             <span>free park</span>
           </label>
           <label>
-            <input type="checkbox" checked={userData.perks.tv} name="tv" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.tv}
+              name="tv"
+              onChange={handleCheckboxes}
+            />
             <span>Tv</span>
           </label>
           <label>
-            <input type="checkbox" checked={userData.perks.radio} name="radio" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.radio}
+              name="radio"
+              onChange={handleCheckboxes}
+            />
             <span>radio</span>
           </label>
           <label>
-            <input type="checkbox" checked={userData.perks.pet} name="pet" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.pet}
+              name="pet"
+              onChange={handleCheckboxes}
+            />
             <span>Pet</span>
           </label>
           <label>
-            <input type="checkbox" checked={userData.perks.entrance} name="entrance" onChange={handleCheckboxes} />
+            <input
+              type="checkbox"
+              checked={userData.perks.entrance}
+              name="entrance"
+              onChange={handleCheckboxes}
+            />
             <span>Private Entrance</span>
           </label>
         </div>
