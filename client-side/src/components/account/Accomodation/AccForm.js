@@ -6,7 +6,7 @@ import "./style.scss";
 const AccForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [userData, setuserData] = useState({
+  const [placeData, setplaceData] = useState({
     title: "",
     address: "",
     link: "",
@@ -31,7 +31,7 @@ const AccForm = () => {
   const handleChange = (e) => {
     name = e.target.name;
     val = e.target.value;
-    setuserData({ ...userData, [name]: val });
+    setplaceData({ ...placeData, [name]: val });
   };
 
   const handleLinkPhotos = async (link) => {
@@ -85,18 +85,18 @@ const AccForm = () => {
   };
   const handleConvertLink = (e) => {
     e.preventDefault();
-    handleLinkPhotos(userData.link);
+    handleLinkPhotos(placeData.link);
   };
 
   const onImageChange = (e) => {
     const files = e.target.files;
     handlePhotosData([...files]);
-    setuserData({ ...userData, photos: files });
+    setplaceData({ ...placeData, photos: files });
   };
 
 
   const handleCheckboxes = (e) => {
-    setuserData({ ...userData, perks: { ...userData.perks, [e.target.name]: !userData.perks[e.target.name] } })
+    setplaceData({ ...placeData, perks: { ...placeData.perks, [e.target.name]: !placeData.perks[e.target.name] } })
   }
 
   const getFormData = async () => {
@@ -135,14 +135,29 @@ const AccForm = () => {
         checkOut: checkOut,
         maxGuests: maxGuests
       };
-      setuserData(dataToUpdate);
-      setimagesFromBackEnd(userData.photos);
+      setplaceData(dataToUpdate);
+      setimagesFromBackEnd(placeData.photos);
     } catch (error) {
       console.log(error);
     }
   }
 
 
+  const updateDataOnServer = async (data) => {
+    try {
+      const response = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`, {
+        data
+      }
+      );
+      console.log(response);
+      // if (response.ok) {
+      // navigate(-1);
+      // }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const sendDataToServer = async (data) => {
     try {
@@ -166,14 +181,17 @@ const AccForm = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // const data = { ...userData, photos: imagesFromBackEnd }
-    console.log(userData);
     // send data to server here
-    // sendDataToServer(data);
+    e.preventDefault();
+    if (id) {
+      updateDataOnServer(placeData);
+      return;
+    }
+    const data = { ...placeData, photos: imagesFromBackEnd };
+    sendDataToServer(data);
   };
 
 
@@ -194,7 +212,7 @@ const AccForm = () => {
         </p>
         <input
           type="text"
-          value={userData.title}
+          value={placeData.title}
           onChange={handleChange}
           name="title"
         />
@@ -207,7 +225,7 @@ const AccForm = () => {
         </p>
         <input
           type="text"
-          value={userData.address}
+          value={placeData.address}
           onChange={handleChange}
           name="address"
         />
@@ -233,7 +251,7 @@ const AccForm = () => {
             type="text"
             name="link"
             onChange={handleChange}
-            value={userData.link}
+            value={placeData.link}
             placeholder="add images using a link"
           />
           <button onClick={handleConvertLink}>add photo</button>
@@ -254,7 +272,7 @@ const AccForm = () => {
         <textarea
           name="description"
           onChange={handleChange}
-          value={userData.description}
+          value={placeData.description}
           cols="30"
           rows="5"
         ></textarea>
@@ -265,7 +283,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.wifi}
+              checked={placeData.perks.wifi}
               name="wifi"
               onChange={handleCheckboxes}
             />
@@ -274,7 +292,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.park}
+              checked={placeData.perks.park}
               name="park"
               onChange={handleCheckboxes}
             />
@@ -283,7 +301,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.tv}
+              checked={placeData.perks.tv}
               name="tv"
               onChange={handleCheckboxes}
             />
@@ -292,7 +310,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.radio}
+              checked={placeData.perks.radio}
               name="radio"
               onChange={handleCheckboxes}
             />
@@ -301,7 +319,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.pet}
+              checked={placeData.perks.pet}
               name="pet"
               onChange={handleCheckboxes}
             />
@@ -310,7 +328,7 @@ const AccForm = () => {
           <label>
             <input
               type="checkbox"
-              checked={userData.perks.entrance}
+              checked={placeData.perks.entrance}
               name="entrance"
               onChange={handleCheckboxes}
             />
@@ -327,7 +345,7 @@ const AccForm = () => {
         <input
           type="text"
           name="extraInfo"
-          value={userData.extraInfo}
+          value={placeData.extraInfo}
           onChange={handleChange}
         />
       </div>
@@ -337,7 +355,7 @@ const AccForm = () => {
           <input
             type="text"
             name="checkIn"
-            value={userData.checkIn}
+            value={placeData.checkIn}
             onChange={handleChange}
           />
         </div>
@@ -346,7 +364,7 @@ const AccForm = () => {
           <input
             type="text"
             name="checkOut"
-            value={userData.checkOut}
+            value={placeData.checkOut}
             onChange={handleChange}
           />
         </div>
@@ -355,13 +373,13 @@ const AccForm = () => {
           <input
             type="number"
             name="maxGuests"
-            value={userData.maxGuests}
+            value={placeData.maxGuests}
             onChange={handleChange}
           />
         </div>
       </div>
       <div className="final_btns">
-        <button type="submit">Save</button>
+        <button type="submit">{id ? "Update" : "Save"}</button>
         <button>cancel</button>
       </div>
     </form>

@@ -73,7 +73,6 @@ export const registerPlace = async (req, res) => {
   try {
     const { title, address, link, photos, description,
       perks, extraInfo, checkIn, checkOut, maxGuests } = req.body.data;
-
     const token = req.cookies.jwt;
     if (token) {
       jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
@@ -137,6 +136,45 @@ export const getPlacesById = async (req, res) => {
     const placeData = await placeModel.findById(id);
     const perksData = await perksModel.findOne({ placeId: placeData._id })
     res.status(200).json({ placeData: placeData, perksData: perksData });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+
+export const updatePlace = async (req, res) => {
+  try {
+    const { data } = req.body;
+    const { id } = req.params;
+    const { title, address, photos, description, perks,
+      extraInfo, checkIn, checkOut, maxGuests } = data;
+    const { wifi, park, tv, radio, pet, entrance } = perks;
+    const token = req.cookies.jwt;
+    if (token) {
+      jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
+        if (error) {
+          console.log(error.message);
+          return;
+        } else {
+          const placeToUpdate = await placeModel.findById(id);
+          const perksToUpdate = await perksModel.findOne({ placeId: place._id });
+          if (!(decoded.id == placeToUpdate.owner)) {
+            console.log("Not a VAlid User ");
+            throw Error;
+          }
+          placeToUpdate.set({
+            title, address, photos, description,
+            extraInfo, checkIn, checkOut, maxGuests
+          });
+          placeToUpdate.save();
+          perksToUpdate.set({
+            wifi, park, tv, radio, pet, entrance
+          });
+          perksToUpdate.save();
+        }
+      });
+    }
+    res.status(201).json("Place updated Successfully");
   } catch (error) {
     res.status(500).json(error);
   }
