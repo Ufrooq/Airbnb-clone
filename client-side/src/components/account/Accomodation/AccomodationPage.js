@@ -39,8 +39,14 @@ const AccomodationPage = () => {
       <Outlet />
       <section className="my_listed_places">
         {
-          places.length > 0 ? places.map((place) => (
-            <MyAccmodations title={place.title} desc={place.description} media={place.photos[2]} />
+          places.length > 0 ? places.map((place, key) => (
+            <MyAccmodations
+              key={key}
+              placeId={place._id}
+              title={place.title}
+              desc={place.description}
+              media={place.photos[2]}
+            />
           )) :
             <h1>No Places Found</h1>
         }

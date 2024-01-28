@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./style.scss";
 
 const AccForm = () => {
+  const { id } = useParams();
+  console.log(id);
   const navigate = useNavigate();
   const [userData, setuserData] = useState({
     title: "",

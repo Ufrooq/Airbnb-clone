@@ -41,6 +41,8 @@
   .my_listed_places {
     margin-top: 20px;
     .accomodation {
+      text-decoration: none;
+      color: black;
       margin: 20px 0px;
       display: flex;
       background-color: rgb(243, 243, 243);
@@ -49,7 +51,7 @@
       align-content: center;
       gap: 20px;
       .image {
-        width: 300px;
+        width: 30%;
         max-width: 400px;
         height: 140px;
         background-color: darkgrey;
@@ -70,6 +72,8 @@
         p {
           margin-top: 5px;
           font-size: medium;
+          font-weight: 600;
+          color: rgba(0, 0, 0, 0.776);
         }
       }
     }
