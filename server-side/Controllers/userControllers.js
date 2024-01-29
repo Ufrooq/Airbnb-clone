@@ -144,33 +144,36 @@ export const getPlacesById = async (req, res) => {
 
 export const updatePlace = async (req, res) => {
   try {
-    const { data } = req.body;
+
+    const token = req.cookies.jwt;
+    const data = req.body;
     const { id } = req.params;
     const { title, address, photos, description, perks,
       extraInfo, checkIn, checkOut, maxGuests } = data;
     const { wifi, park, tv, radio, pet, entrance } = perks;
-    const token = req.cookies.jwt;
     if (token) {
       jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
         if (error) {
           console.log(error.message);
           return;
         } else {
+          console.log("FUNCTION ENCOUNTERNERD ~!!!")
           const placeToUpdate = await placeModel.findById(id);
-          const perksToUpdate = await perksModel.findOne({ placeId: place._id });
-          if (!(decoded.id == placeToUpdate.owner)) {
+          console.log(placeToUpdate);
+          const perksToUpdate = await perksModel.findOne({ placeId: placeToUpdate._id });
+          if (!(decoded.id == placeToUpdate.owner.toString())) {
             console.log("Not a VAlid User ");
             throw Error;
           }
-          placeToUpdate.set({
+          await placeToUpdate.set({
             title, address, photos, description,
             extraInfo, checkIn, checkOut, maxGuests
           });
-          placeToUpdate.save();
+          await placeToUpdate.save();
           perksToUpdate.set({
             wifi, park, tv, radio, pet, entrance
           });
-          perksToUpdate.save();
+          await perksToUpdate.save();
         }
       });
     }

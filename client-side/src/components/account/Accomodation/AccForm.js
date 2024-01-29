@@ -146,14 +146,14 @@ const AccForm = () => {
   const updateDataOnServer = async (data) => {
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`, {
-        data
-      }
+        `${process.env.REACT_APP_BASE_URL}/users/places/${id}`,
+        data,
+        { withCredentials: true },
       );
       console.log(response);
-      // if (response.ok) {
-      // navigate(-1);
-      // }
+      if (response.status == 201) {
+        navigate("/account/accomodations");
+      }
     } catch (error) {
       console.log(error);
     }
