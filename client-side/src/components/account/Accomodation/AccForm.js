@@ -182,17 +182,30 @@ const AccForm = () => {
       console.log(error);
     }
   };
+  var temp = [];
+  const handleImageUpdate = (imgAddress) => {
+    console.log(temp);
+    temp = [...imagesFromBackEnd];
+    temp.filter((image) => {
+      return imgAddress !== image;
+    })
+    console.log(temp);
+    setimagesFromBackEnd(temp);
+  }
 
   const handleSubmit = (e) => {
     // send data to server here
     e.preventDefault();
-    if (id) {
-      updateDataOnServer(placeData);
-      return;
-    }
-    const data = { ...placeData, photos: imagesFromBackEnd };
-    sendDataToServer(data);
+    // if (id) {
+    //   updateDataOnServer(placeData);
+    //   return;
+    // }
+    // const data = { ...placeData, photos: imagesFromBackEnd };
+    // sendDataToServer(data);
+    console.log(imagesFromBackEnd);
+    console.log("temp", temp);
   };
+
 
 
   useEffect(() => {
@@ -230,23 +243,13 @@ const AccForm = () => {
           name="address"
         />
       </div>
-      <div className="photo">
+      <div className="photos_section">
         <h2>Photos</h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta,
           ipsa?
         </p>
         <div className="link_photo">
-          <br />
-          {imagesFromBackEnd.length > 0 &&
-            imagesFromBackEnd.map((image, key) => (
-              <img
-                key={key}
-                src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
-                alt="image"
-              />
-            ))}
-          <br />
           <input
             type="text"
             name="link"
@@ -256,11 +259,23 @@ const AccForm = () => {
           />
           <button onClick={handleConvertLink}>add photo</button>
         </div>
-        <div className="upload_photo">
-          <label>
-            upload from your device
-            <input type="file" multiple="multiple" onChange={onImageChange} />
-          </label>
+        <div className="photos">
+          {imagesFromBackEnd.length > 0 &&
+            imagesFromBackEnd.map((image, key) => (
+              <div className="gal img_" key={key}>
+                <img
+                  src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
+                  alt="image"
+                />
+                <i class="fa-regular fa-trash-can" onClick={() => handleImageUpdate(image)}></i>
+              </div>
+            ))}
+          <div className="gal upload_label">
+            <label>
+              Upload
+              <input type="file" multiple="multiple" onChange={onImageChange} />
+            </label>
+          </div>
         </div>
       </div>
       <div>
