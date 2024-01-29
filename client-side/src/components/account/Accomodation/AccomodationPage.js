@@ -6,6 +6,7 @@ import MyAccmodations from "./MyAccmodations";
 
 
 const AccomodationPage = () => {
+  console.log("AccomodationPage");
   const navigate = useNavigate();
   const [places, setplaces] = useState([]);
 
@@ -21,14 +22,14 @@ const AccomodationPage = () => {
         }
       );
       const data = await response.json();
-      setplaces([...places, ...data]);
+      setplaces([...data]);
     } catch (error) {
       console.log(error);
     }
   };
   useEffect(() => {
     getPlaces();
-  }, [])
+  }, [navigate]);
 
   return (
     <section className="accomodations_section">
@@ -37,20 +38,9 @@ const AccomodationPage = () => {
         Add new Plcaes
       </button>
       <Outlet />
-      <section className="my_listed_places">
-        {
-          places.length > 0 ? places.map((place, key) => (
-            <MyAccmodations
-              key={key}
-              placeId={place._id}
-              title={place.title}
-              desc={place.description}
-              media={place.photos[2]}
-            />
-          )) :
-            <h1>No Places Found</h1>
-        }
-      </section>
+      {
+        places.length > 0 ? <MyAccmodations places={places} /> : null
+      }
     </section>
   );
 };
