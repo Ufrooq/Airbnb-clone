@@ -153,7 +153,7 @@ const AccForm = () => {
       );
       console.log(response);
       if (response.status == 201) {
-        navigate("/account/accomodations");
+        navigate(-1);
       }
     } catch (error) {
       console.log(error);
@@ -194,16 +194,22 @@ const AccForm = () => {
     setimagesFromBackEnd(filteredArray);
   }
 
+  const swapArray = (array, index1, index2) => {
+    const temp = array[index1];
+    array[index1] = array[index2];
+    array[index2] = temp;
+    return array;
+  }
   const handleSubmit = (e) => {
-    // send data to server here
     e.preventDefault();
-    // if (id) {
-    //   updateDataOnServer(placeData);
-    //   return;
-    // }
-    // const data = { ...placeData, photos: imagesFromBackEnd };
-    // sendDataToServer(data);
-    console.log(imagesFromBackEnd);
+    setimagesFromBackEnd([...swapArray(imagesFromBackEnd, 0, starredImg)])
+    // send data to server here
+    if (id) {
+      updateDataOnServer(placeData);
+      return;
+    }
+    const data = { ...placeData, photos: imagesFromBackEnd };
+    sendDataToServer(data);
   };
 
 
@@ -213,7 +219,7 @@ const AccForm = () => {
       return;
 
     getFormData();
-  }, [id])
+  }, [id]);
 
   return (
     <form onSubmit={handleSubmit}   >

@@ -9,7 +9,7 @@ const MyAccmodations = ({ places }) => {
         places.length > 0 ? places.map((place, key) => (
           <Link to={place._id} key={key} className="accomodation">
             <div className="image">
-              <img src={`${process.env.REACT_APP_BASE_URL}/Uploads/${place.photos[2]}`}
+              <img src={`${process.env.REACT_APP_BASE_URL}/Uploads/${place.photos[0]}`}
                 alt="image" />
             </div>
             <div className="info">

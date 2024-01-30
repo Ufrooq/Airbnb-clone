@@ -144,7 +144,6 @@ export const getPlacesById = async (req, res) => {
 
 export const updatePlace = async (req, res) => {
   try {
-
     const token = req.cookies.jwt;
     const data = req.body;
     const { id } = req.params;
@@ -157,15 +156,13 @@ export const updatePlace = async (req, res) => {
           console.log(error.message);
           return;
         } else {
-          console.log("FUNCTION ENCOUNTERNERD ~!!!")
           const placeToUpdate = await placeModel.findById(id);
-          console.log(placeToUpdate);
           const perksToUpdate = await perksModel.findOne({ placeId: placeToUpdate._id });
           if (!(decoded.id == placeToUpdate.owner.toString())) {
             console.log("Not a VAlid User ");
             throw Error;
           }
-          await placeToUpdate.set({
+          placeToUpdate.set({
             title, address, photos, description,
             extraInfo, checkIn, checkOut, maxGuests
           });
