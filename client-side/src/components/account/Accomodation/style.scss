@@ -53,11 +53,18 @@
           }
         }
         .img_ {
-          i {
+          .delete {
             cursor: pointer;
             position: absolute;
             bottom: 10px;
             right: 10px;
+            color: #fff;
+          }
+          .star {
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
             color: #fff;
           }
         }

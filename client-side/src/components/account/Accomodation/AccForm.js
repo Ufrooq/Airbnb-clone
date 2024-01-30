@@ -25,6 +25,7 @@ const AccForm = () => {
     checkOut: 0,
     maxGuests: 1,
   });
+  const [starredImg, setstarredImg] = useState(-1);
 
   const [imagesFromBackEnd, setimagesFromBackEnd] = useState([]);
   let name, val;
@@ -182,7 +183,13 @@ const AccForm = () => {
       console.log(error);
     }
   };
-  const handleImageUpdate = (imgAddress) => {
+
+  const setCoverPhoto = (imgAddress) => {
+    // const filteredArray = imagesFromBackEnd.filter(item => item != imgAddress)
+    // setimagesFromBackEnd(filteredArray);
+    console.log(imgAddress);
+  }
+  const removePhoto = (imgAddress) => {
     const filteredArray = imagesFromBackEnd.filter(item => item != imgAddress)
     setimagesFromBackEnd(filteredArray);
   }
@@ -260,7 +267,18 @@ const AccForm = () => {
                   src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
                   alt="image"
                 />
-                <i className="fa-regular fa-trash-can" onClick={() => handleImageUpdate(image)}></i>
+                {starredImg == key ?
+                  <i class="fa-solid fa-star star"
+                    onClick={() => setstarredImg(-1)}
+                  ></i>
+                  :
+                  <i
+                    className="fa-regular fa-star star"
+                    onClick={() => setstarredImg(key)}
+                  ></i>
+                }
+
+                <i className="fa-regular fa-trash-can delete" onClick={() => removePhoto(image)}></i>
               </div>
             ))}
           <div className="gal upload_label">
