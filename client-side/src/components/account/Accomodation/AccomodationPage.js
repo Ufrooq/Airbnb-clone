@@ -42,6 +42,7 @@ const AccomodationPage = () => {
         places.length > 0 ? <MyAccmodations places={places} /> : null
       }
     </section>
+
   );
 };
 

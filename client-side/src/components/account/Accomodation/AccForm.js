@@ -182,15 +182,9 @@ const AccForm = () => {
       console.log(error);
     }
   };
-  var temp = [];
   const handleImageUpdate = (imgAddress) => {
-    console.log(temp);
-    temp = [...imagesFromBackEnd];
-    temp.filter((image) => {
-      return imgAddress !== image;
-    })
-    console.log(temp);
-    setimagesFromBackEnd(temp);
+    const filteredArray = imagesFromBackEnd.filter(item => item != imgAddress)
+    setimagesFromBackEnd(filteredArray);
   }
 
   const handleSubmit = (e) => {
@@ -203,7 +197,6 @@ const AccForm = () => {
     // const data = { ...placeData, photos: imagesFromBackEnd };
     // sendDataToServer(data);
     console.log(imagesFromBackEnd);
-    console.log("temp", temp);
   };
 
 
@@ -267,7 +260,7 @@ const AccForm = () => {
                   src={`${process.env.REACT_APP_BASE_URL}/Uploads/${image}`}
                   alt="image"
                 />
-                <i class="fa-regular fa-trash-can" onClick={() => handleImageUpdate(image)}></i>
+                <i className="fa-regular fa-trash-can" onClick={() => handleImageUpdate(image)}></i>
               </div>
             ))}
           <div className="gal upload_label">

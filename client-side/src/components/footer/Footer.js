@@ -27,17 +27,17 @@ const Footer = () => {
         </li>
         <li>
           <a href="">
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </a>
         </li>
         <li>
           <a href="">
-            <i class="fa-brands fa-facebook"></i>
+            <i className="fa-brands fa-facebook"></i>
           </a>
         </li>
         <li>
           <a href="">
-            <i class="fa-brands fa-square-x-twitter"></i>
+            <i className="fa-brands fa-square-x-twitter"></i>
           </a>
         </li>
       </ul>

@@ -9,11 +9,11 @@ const Rooms = () => {
       <h1 className="heading_main">Cozy room in a vegan oasis</h1>
       <div className="sub_main">
         <div className="reviews">
-          <i class="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
+          <i className="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
           <a href="/"> São Paulo, Brazil</a>
         </div>
         <div className="save">
-          <i class="fa-regular fa-bookmark"></i>save
+          <i className="fa-regular fa-bookmark"></i>save
           {/* <i class="fa-regular fa-bookmark"></i> already saved-icons */}
         </div>
       </div>
@@ -54,7 +54,7 @@ const Rooms = () => {
           <h1>Tiny home in Râșnov Romacril, Romania</h1>
           <p>4 guests. 2 bedrooms . 2 beds . 1 bath</p>
           <p>
-            <i class="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
+            <i className="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
           </p>
         </div>
       </div>
@@ -65,21 +65,21 @@ const Rooms = () => {
       <div className="description_section">
         <ul>
           <li>
-            <i class="fa-solid fa-ranking-star"></i>
+            <i className="fa-solid fa-ranking-star"></i>
             <div>
               <p>Dragos is a Superhost</p>
               <p>Superhosts are experienced, highly rated Hosts.</p>
             </div>
           </li>
           <li>
-            <i class="fa-solid fa-location-dot"></i>
+            <i className="fa-solid fa-location-dot"></i>
             <div>
               <p>Great location</p>
               <p>100% of recent guests gave the location a 5-star rating.</p>
             </div>
           </li>
           <li>
-            <i class="fa-solid fa-calendar-week"></i>
+            <i className="fa-solid fa-calendar-week"></i>
             <div>
               <p>Free cancellation before Oct 30.</p>
             </div>
@@ -97,31 +97,31 @@ const Rooms = () => {
         <h1>What this place offers</h1>
         <div className="services">
           <p>
-            <i class="fa-solid fa-mountain-sun"></i>
+            <i className="fa-solid fa-mountain-sun"></i>
             Mountain view
           </p>
           <p>
-            <i class="fa-solid fa-wifi"></i>
+            <i className="fa-solid fa-wifi"></i>
             Wifi
           </p>
           <p>
-            <i class="fa-solid fa-ban-smoking"></i>
+            <i className="fa-solid fa-ban-smoking"></i>
             Smoking allowed
           </p>
           <p>
-            <i class="fa-solid fa-bell"></i>
+            <i className="fa-solid fa-bell"></i>
             Smoke alarm
           </p>
           <p>
-            <i class="fa-solid fa-image"></i>
+            <i className="fa-solid fa-image"></i>
             Valley view
           </p>
           <p>
-            <i class="fa-solid fa-fire-burner"></i>
+            <i className="fa-solid fa-fire-burner"></i>
             Fire pit
           </p>
           <p>
-            <i class="fa-solid fa-bell"></i>
+            <i className="fa-solid fa-bell"></i>
             Carbon monoxide alarm
           </p>
         </div>
