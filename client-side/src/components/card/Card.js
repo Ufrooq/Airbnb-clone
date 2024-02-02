@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import "./style.scss";
+import { Link } from "react-router-dom";
 
-const Card = ({ title, img, desc, price }) => {
+const Card = ({ title, img, desc, price, id }) => {
   const [liked, setliked] = useState(false);
   return (
-    <div className="card">
+    <Link to={`/rooms/${id}`}
+      style={{ textDecoration: "none", color: "black" }}
+      className="card"
+    >
       <div className="media">
         <img
           src={`${process.env.REACT_APP_BASE_URL}/Uploads/${img}`}
@@ -41,7 +45,7 @@ const Card = ({ title, img, desc, price }) => {
           <span>{price}$</span> per night
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
