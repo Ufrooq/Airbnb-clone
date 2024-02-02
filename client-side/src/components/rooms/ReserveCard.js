@@ -12,7 +12,27 @@ const ReserveCard = ({ price }) => {
             <i className="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
           </p>
         </div>
-        <button>Check availability</button>
+        <div className="inputs_">
+          <div className="_in_out">
+            <div className="cld">
+              <label>
+                Check in :
+              </label>
+              <input type="date" name="in" id="in" />
+            </div>
+            <div className="cld out">
+              <label>
+                Check out :
+              </label>
+              <input type="date" name="" id="" />
+            </div>
+          </div>
+          <div className="guests">
+            Number of Guests
+            <input type="number" />
+          </div>
+        </div>
+        <button>Book Place</button>
       </div>
     </div>
   );
