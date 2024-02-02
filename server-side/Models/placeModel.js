@@ -12,6 +12,7 @@ const placeSchema = new mongoose.Schema({
   checkIn: Number,
   checkOut: Number,
   maxGuests: Number,
+  price: Number
 });
 
 const placeModel = mongoose.model("Place", placeSchema);

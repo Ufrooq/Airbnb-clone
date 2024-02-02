@@ -24,6 +24,7 @@ const AccForm = () => {
     checkIn: 0,
     checkOut: 0,
     maxGuests: 1,
+    price: 10
   });
   const [starredImg, setstarredImg] = useState(-1);
 
@@ -110,7 +111,7 @@ const AccForm = () => {
 
       // destructuring placeData fom server -->
       const { title, address, link, photos, description,
-        extraInfo, checkIn, checkOut, maxGuests } = placeData;
+        extraInfo, checkIn, checkOut, maxGuests, price } = placeData;
 
       // destructuring perksData fom server -->
       const { wifi, park, tv, radio, pet, entrance } = perksData;
@@ -124,6 +125,7 @@ const AccForm = () => {
         entrance: entrance || false,
       };
 
+
       const dataToUpdate = {
         title: title,
         address: address,
@@ -134,7 +136,8 @@ const AccForm = () => {
         extraInfo: extraInfo,
         checkIn: checkIn,
         checkOut: checkOut,
-        maxGuests: maxGuests
+        maxGuests: maxGuests,
+        price: price
       };
       setplaceData(dataToUpdate);
       setimagesFromBackEnd(placeData.photos);
@@ -406,6 +409,15 @@ const AccForm = () => {
             type="number"
             name="maxGuests"
             value={placeData.maxGuests}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="price">
+          <h2>Price in $</h2>
+          <input
+            type="number"
+            name="price"
+            value={placeData.price}
             onChange={handleChange}
           />
         </div>

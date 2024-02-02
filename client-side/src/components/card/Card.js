@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.scss";
 
-const Card = ({ title, img }) => {
+const Card = ({ title, img, desc, price }) => {
   const [liked, setliked] = useState(false);
   return (
     <div className="card">
@@ -32,14 +32,16 @@ const Card = ({ title, img }) => {
             <i className="fa-solid fa-star"></i>4.9
           </span>
         </div>
-        <p>300 kilometers away</p>
+        <p style={{ textOverflow: "ellipsis", overflow: "hidden" }}>
+          {desc}
+        </p>
       </div>
       <div className="price">
         <p>
-          <span>120$</span> per night
+          <span>{price}$</span> per night
         </p>
       </div>
-    </div >
+    </div>
   );
 };
 

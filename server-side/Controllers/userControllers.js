@@ -72,7 +72,7 @@ export const loginUser = async (req, res) => {
 export const registerPlace = async (req, res) => {
   try {
     const { title, address, link, photos, description,
-      perks, extraInfo, checkIn, checkOut, maxGuests } = req.body.data;
+      perks, extraInfo, checkIn, checkOut, maxGuests, price } = req.body.data;
     const token = req.cookies.jwt;
     if (token) {
       jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
@@ -89,7 +89,8 @@ export const registerPlace = async (req, res) => {
             extraInfo,
             checkIn,
             checkOut,
-            maxGuests
+            maxGuests,
+            price
           });
           const { wifi, park, tv, radio, pet, entrance } = perks;
           const perksFor_NewPlace = await perksModel.create({

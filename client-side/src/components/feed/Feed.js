@@ -36,7 +36,7 @@ const Feed = () => {
         <>
           {
             posts.map((post, key) => (
-              <Card key={key} title={post.title} img={post.photos[0]} />
+              <Card key={key} title={post.title} img={post.photos[0]} desc={post.description} price={post.price} />
             ))
           }
         </>
