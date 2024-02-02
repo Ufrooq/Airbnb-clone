@@ -5,6 +5,7 @@ import { dbCon } from "./Connections/connectDb.js";
 import cookieParser from "cookie-parser";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import { getAllPlaces } from "./Controllers/controllers.js";
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/Uploads", express.static(__dirname + "/Uploads"));
 app.use("/users", userRoutes);
+app.get("/places", getAllPlaces);
 
 // dbconnection --->
 dbCon();

@@ -1,3 +1,4 @@
+$pink_color: #fa4d6d;
 .card {
   width: 320px;
   padding: 10px;
@@ -16,10 +17,11 @@
     }
     i {
       position: absolute;
-      right: 15px;
-      top: 15px;
+      right: 20px;
+      top: 20px;
       font-size: 1.2rem;
-      color: #0000008d;
+      // color: #0000008d;
+      cursor: pointer;
     }
   }
   .desc {
