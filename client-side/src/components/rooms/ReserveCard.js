@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ReserveCard = ({ price }) => {
+
+
+  const { bookingData, setBookingData } = useState({
+    checkIn: 0,
+    checkOut: 0,
+    guests: 1,
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setBookingData({ ...bookingData, [e.target.name]: e.target.value })
+  }
+
   return (
     <div className="reservation_section">
       <div className="reservation_card">
@@ -18,21 +31,33 @@ const ReserveCard = ({ price }) => {
               <label>
                 Check in :
               </label>
-              <input type="date" name="in" id="in" />
+              <input
+                type="date"
+                name="checkIn"
+                onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
+              />
             </div>
             <div className="cld out">
               <label>
                 Check out :
               </label>
-              <input type="date" name="" id="" />
+              <input
+                type="date"
+                name="checkOut"
+                onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
+              />
             </div>
           </div>
           <div className="guests">
             Number of Guests
-            <input type="number" />
+            <input
+              type="number"
+              name="guests"
+              onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
+            />
           </div>
         </div>
-        <button>Book Place</button>
+        <button onClick={handleSubmit}>Book Place</button>
       </div>
     </div>
   );
