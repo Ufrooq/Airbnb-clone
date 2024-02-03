@@ -26,6 +26,7 @@ $pink_color: #fa4d6d;
   }
 
   .features {
+    position: relative;
     display: flex;
     column-gap: 15px;
     align-items: center;
@@ -36,14 +37,49 @@ $pink_color: #fa4d6d;
       text-decoration: none;
       font-weight: 600;
     }
-
-    i {
-      background-color: $pink_color;
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding: 8px;
-      border-radius: 50%;
-      color: #fff;
+    .searchBox {
+      display: flex;
+      align-items: center;
+      border-radius: 25px;
+      width: auto;
+      border: 1.5px solid $pink_color;
+      input {
+        border-radius: 0px 25px 25px 0px;
+        padding: 7px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+      }
+      button {
+        border-radius: 70px 0% 0% 70px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        overflow: hidden;
+        width: 50px;
+        background-color: $pink_color;
+        i {
+          font-weight: bold;
+          font-size: 1.1rem;
+          padding: 8px;
+          color: #fff;
+          transition: 0.1s all;
+        }
+      }
+      &:hover {
+        i {
+          transform: scale(1.05);
+        }
+      }
+    }
+    .suggestions {
+      z-index: 5;
+      width: 180px;
+      height: 200px;
+      position: absolute;
+      top: 50px;
+      right: 35px;
+      background-color: black;
     }
   }
 

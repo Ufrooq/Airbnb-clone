@@ -7,6 +7,7 @@ const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const [userdata, setuserdata] = useState();
   const [showModel, setshowModel] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   async function getUserData() {
     try {
@@ -33,6 +34,11 @@ const Navbar = () => {
     navigate("/register");
   }
 
+  function handleSearch() {
+    console.log("items");
+  }
+
+
   useEffect(() => {
     getUserData();
   }, [isLoggedIn]);
@@ -49,7 +55,18 @@ const Navbar = () => {
         <Link style={{ color: "black" }}>Anywhere</Link>|
         <Link style={{ color: "black" }}>Anyweek</Link>|
         <Link style={{ color: "black" }}>Add guests</Link>
-        <i className="fa-solid fa-magnifying-glass"></i>
+        <div className="searchBox">
+          <button onClick={handleSearch}>
+            <i className="fa-solid fa-magnifying-glass">
+            </i>
+          </button>
+          <input type="text" onChange={() => setShowSuggestions(true)} />
+        </div>
+        {showSuggestions && (
+          <div className="suggestions">
+
+          </div>)
+        }
       </div>
       <div className="other">
         <i
