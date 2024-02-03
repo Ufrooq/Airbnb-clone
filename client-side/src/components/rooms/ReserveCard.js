@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { differenceInCalendarDays } from 'date-fns';
+import { useNavigate } from "react-router-dom";
 
-const ReserveCard = ({ price }) => {
-
+const ReserveCard = ({ price, id }) => {
+  const navigate = useNavigate();
   const [bookingData, setBookingData] = useState({
     checkIn: 0,
     checkOut: 0,
@@ -27,11 +28,15 @@ const ReserveCard = ({ price }) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            data,
+            data: data,
+            price: noOfDays * price,
+            placeId: id
           }),
         }
       );
-      console.log(response);
+      if (response.ok) {
+        navigate("/account/bookings")
+      }
     } catch (error) {
       console.log(error);
     }

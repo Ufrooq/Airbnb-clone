@@ -70,7 +70,7 @@ const Rooms = () => {
           <div className="gallery_section">
             <div className="image_gallery">
               {place.photos.map((photo, key) => (
-                <div id={`im_${key + 1}`} className="image_wrapper">
+                <div id={`im_${key + 1}`} key={key} className="image_wrapper">
                   <img
                     src={`${process.env.REACT_APP_BASE_URL}/Uploads/${photo}`}
                     alt={`photo${key + 1}`}
@@ -88,7 +88,7 @@ const Rooms = () => {
           </div>
           <div className="middle_section">
             <Host name={host} />
-            <ReserveCard price={place.price} />
+            <ReserveCard price={place.price} id={place._id} />
           </div>
           <div className="description_section">
             <ul>
