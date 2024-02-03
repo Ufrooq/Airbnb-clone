@@ -2,8 +2,7 @@ import React, { useState } from "react";
 
 const ReserveCard = ({ price }) => {
 
-
-  const { bookingData, setBookingData } = useState({
+  const [bookingData, setBookingData] = useState({
     checkIn: 0,
     checkOut: 0,
     guests: 1,
@@ -11,7 +10,7 @@ const ReserveCard = ({ price }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBookingData({ ...bookingData, [e.target.name]: e.target.value })
+    console.log(bookingData);
   }
 
   return (
@@ -34,6 +33,7 @@ const ReserveCard = ({ price }) => {
               <input
                 type="date"
                 name="checkIn"
+                value={bookingData.checkIn}
                 onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
               />
             </div>
@@ -44,18 +44,46 @@ const ReserveCard = ({ price }) => {
               <input
                 type="date"
                 name="checkOut"
+                value={bookingData.checkOut}
                 onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
               />
             </div>
           </div>
-          <div className="guests">
-            Number of Guests
+          <div className="guests booking_info">
+            Number of Guests :
             <input
               type="number"
               name="guests"
+              value={bookingData.guests}
               onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
             />
           </div>
+          <>
+            {bookingData.checkIn > 0 && bookingData.checkOut > 0 && bookingData.guests > 1 &&
+              (
+                <>
+                  <div className="name_ booking_info">
+                    Enter Fullname :
+                    <input
+                      type="text"
+                      name="guests"
+                      value={bookingData.guests}
+                      onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
+                    />
+                  </div>
+                  <div className="phone_ booking_info">
+                    Enter Phone :
+                    <input
+                      type="number"
+                      name="guests"
+                      value={bookingData.guests}
+                      onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
+                    />
+                  </div>
+                </>
+              )
+            }
+          </>
         </div>
         <button onClick={handleSubmit}>Book Place</button>
       </div>
