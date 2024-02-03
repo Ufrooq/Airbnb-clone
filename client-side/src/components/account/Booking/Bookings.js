@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useEffect } from "react";
-import "./style.scss";
+import React, { useEffect, useState } from "react";
 import BookingCard from "./BookingCard";
+import { format, differenceInCalendarDays } from "date-fns";
+import "./style.scss";
 
 const Bookings = () => {
+  const [bookings, setBookings] = useState([]);
   const getBookings = async () => {
     // send data to server and get response back
     try {
@@ -11,7 +13,7 @@ const Bookings = () => {
         `${process.env.REACT_APP_BASE_URL}/booking`,
         { withCredentials: true },
       );
-      console.log(response.data);
+      setBookings(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -24,10 +26,20 @@ const Bookings = () => {
   return (
     <section className="booking">
       <h1>My Bookings</h1>
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
+      {bookings.length > 0 && (
+        bookings.map((booking, key) => (
+          <BookingCard
+            key={key}
+            img={booking.placeId.photos[0]}
+            title={booking.placeId.title}
+            checkIn={format(new Date(booking.checkIn), "yyyy-MM-dd")}
+            checkOut={format(new Date(booking.checkOut), "yyyy-MM-dd")}
+            nights={differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))}
+            price={booking.price}
+          />
+        ))
+      )}
+
     </section>
   );
 };

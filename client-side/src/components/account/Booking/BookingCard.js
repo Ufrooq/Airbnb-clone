@@ -1,32 +1,34 @@
 import React from 'react';
 import "./style.scss";
 
-const BookingCard = () => {
+const BookingCard = ({ img, title, checkIn, checkOut, nights, price }) => {
     return (
         <div className="booking_card">
             <div className="card_image">
-                <img src="https://images.pexels.com/photos/925684/pexels-photo-925684.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="" />
+                <img src={`${process.env.REACT_APP_BASE_URL}/Uploads/${img}`}
+                    alt="img"
+                />
             </div>
             <div className="card_content">
-                <h2>Card Title for booking</h2>
+                <h2>{title}</h2>
                 <div className="time_frame">
                     <span>
                         <i class="fa-solid fa-calendar-days"></i>
-                        2023-01-16
+                        {checkIn}
                     </span>
                     <i class="fa-solid fa-arrow-right"></i>
                     <span>
                         <i class="fa-solid fa-calendar-days"></i>
-                        2023-01-16
+                        {checkOut}
                     </span>
                 </div>
                 <div className="price">
                     <span>
                         <i class="fa-solid fa-moon">
                         </i>
-                        6 nights{" "}
+                        {nights} nights{" "}
                     </span>
-                    | Total Price : <span style={{ fontWeight: "bold" }}>$1200</span>
+                    | Total Price : <span style={{ fontWeight: "bold" }}>${price}</span>
                 </div>
             </div>
         </div>

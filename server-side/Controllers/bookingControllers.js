@@ -42,8 +42,7 @@ export const getBookings = async (req, res) => {
                     console.log(error.message);
                     return;
                 } else {
-                    const myBookings = await BookingModel.find({ user: decoded.id });
-                    console.log(myBookings);
+                    const myBookings = await BookingModel.find({ user: decoded.id }).populate("placeId");
                     res.status(200).json(myBookings);
                 }
             });
