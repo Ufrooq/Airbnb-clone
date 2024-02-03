@@ -26,7 +26,7 @@ function App() {
             <Route path="/" element={<Feed />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
-            <Route path="/room/:id" element={<Rooms />} />
+            <Route path="/rooms/:id" element={<Rooms />} />
             <Route path="/account" element={<Account />}>
               <Route path="perInfo" element={<PerInfo />} />
               <Route path="accomodations" element={<AccomodationPage />}>
@@ -34,6 +34,7 @@ function App() {
                 <Route path=":id" element={<AccForm />} />
               </Route>
               <Route path="bookings" element={<Bookings />} />
+              <Route path="bookings/:id" element={<Rooms />} />
             </Route>
           </Routes>
           <Footer />

@@ -1,11 +1,17 @@
 import React from 'react';
+import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 
-const BookingCard = ({ img, title, checkIn, checkOut, nights, price }) => {
+const BookingCard = ({ placeId, img, title, checkIn, checkOut, nights, price }) => {
+    console.log(placeId);
     return (
-        <div className="booking_card">
+        <Link
+            to={placeId}
+            className="booking_card"
+            style={{ textDecoration: "none", color: "black" }}
+        >
             <div className="card_image">
-                <img src={`${process.env.REACT_APP_BASE_URL}/Uploads/${img}`}
+                <img src={`${process.env.REACT_APP_BASE_URL} /Uploads/${img} `}
                     alt="img"
                 />
             </div>
@@ -31,7 +37,7 @@ const BookingCard = ({ img, title, checkIn, checkOut, nights, price }) => {
                     | Total Price : <span style={{ fontWeight: "bold" }}>${price}</span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

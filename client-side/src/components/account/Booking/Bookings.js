@@ -31,6 +31,7 @@ const Bookings = () => {
           <BookingCard
             key={key}
             img={booking.placeId.photos[0]}
+            placeId={booking.placeId._id}
             title={booking.placeId.title}
             checkIn={format(new Date(booking.checkIn), "yyyy-MM-dd")}
             checkOut={format(new Date(booking.checkOut), "yyyy-MM-dd")}
