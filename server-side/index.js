@@ -1,6 +1,7 @@
 import express from "express";
 import userRoutes from "./Routes/userRoutes.js";
 import placeRoutes from "./Routes/placeRoutes.js";
+import bookingRoutes from "./Routes/bookingRoutes.js";
 import cors from "cors";
 import { dbCon } from "./Connections/connectDb.js";
 import cookieParser from "cookie-parser";
@@ -12,6 +13,8 @@ const app = express();
 const port = process.env.PORT || 8000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+// settingUp middlewares --->
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -20,9 +23,12 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
+
+// setting main routes --->
 app.use("/Uploads", express.static(__dirname + "/Uploads"));
 app.use("/users", userRoutes);
 app.use("/places", placeRoutes);
+app.use("/booking", bookingRoutes);
 
 // dbconnection --->
 dbCon();

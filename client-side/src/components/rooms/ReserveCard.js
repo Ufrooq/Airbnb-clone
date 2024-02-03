@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { differenceInCalendarDays } from 'date-fns';
 
 const ReserveCard = ({ price }) => {
 
@@ -6,11 +7,38 @@ const ReserveCard = ({ price }) => {
     checkIn: 0,
     checkOut: 0,
     guests: 1,
+    fullname: "",
+    phone: 0
   });
+  let noOfDays = 0;
+  if (bookingData.checkIn && bookingData.checkOut) {
+    noOfDays = differenceInCalendarDays(new Date(bookingData.checkOut), new Date(bookingData.checkIn));
+  }
 
+  const sendData = async (data) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/booking`,
+        {
+          method: "POST",
+          credentials: "include",
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data,
+          }),
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(bookingData);
+    sendData(bookingData);
   }
 
   return (
@@ -59,15 +87,15 @@ const ReserveCard = ({ price }) => {
             />
           </div>
           <>
-            {bookingData.checkIn > 0 && bookingData.checkOut > 0 && bookingData.guests > 1 &&
+            {noOfDays > 0 && bookingData.guests > 1 &&
               (
                 <>
                   <div className="name_ booking_info">
                     Enter Fullname :
                     <input
                       type="text"
-                      name="guests"
-                      value={bookingData.guests}
+                      name="fullname"
+                      value={bookingData.fullname}
                       onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
                     />
                   </div>
@@ -75,8 +103,8 @@ const ReserveCard = ({ price }) => {
                     Enter Phone :
                     <input
                       type="number"
-                      name="guests"
-                      value={bookingData.guests}
+                      name="phone"
+                      value={bookingData.phone}
                       onChange={(e) => setBookingData({ ...bookingData, [e.target.name]: e.target.value })}
                     />
                   </div>
@@ -85,7 +113,7 @@ const ReserveCard = ({ price }) => {
             }
           </>
         </div>
-        <button onClick={handleSubmit}>Book Place</button>
+        <button onClick={handleSubmit}>Book this place{noOfDays > 0 && ` for ${noOfDays * price}$`}</button>
       </div>
     </div>
   );
