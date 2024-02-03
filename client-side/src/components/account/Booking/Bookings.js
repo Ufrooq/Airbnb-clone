@@ -28,23 +28,6 @@ const Bookings = () => {
       <BookingCard />
       <BookingCard />
       <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
-      <BookingCard />
     </section>
   );
 };

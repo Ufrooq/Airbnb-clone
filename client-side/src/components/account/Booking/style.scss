@@ -11,12 +11,12 @@
   }
 
   .booking_card {
-    margin: 20px 0px;
+    margin: 25px 0px;
     display: flex;
-    height: 140px;
+    height: 150px;
     overflow: hidden;
     border-radius: 10px;
-    background-color: #fefefe;
+    background-color: #ffffff;
     .card_image {
       img {
         width: 100%;
@@ -42,6 +42,7 @@
         span {
           i {
             margin-right: 3px;
+            color: rgb(71, 193, 241);
           }
         }
       }
@@ -50,6 +51,7 @@
           i {
             margin-right: 3px;
             font-size: 1.1rem;
+            color: rgba(255, 255, 0, 0.956);
           }
         }
       }
