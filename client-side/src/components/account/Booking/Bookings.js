@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import BookingCard from "./BookingCard";
 import { format, differenceInCalendarDays } from "date-fns";
 import "./style.scss";
+import LoaderMain from "../../loader/LoaderMain";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
@@ -13,7 +14,9 @@ const Bookings = () => {
         `${process.env.REACT_APP_BASE_URL}/booking`,
         { withCredentials: true },
       );
-      setBookings(response.data);
+      setTimeout(() => {
+        setBookings(response.data);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +29,7 @@ const Bookings = () => {
   return (
     <section className="booking">
       <h1>My Bookings</h1>
-      {bookings.length > 0 && (
+      {bookings.length > 0 ? (
         bookings.map((booking, key) => (
           <BookingCard
             key={key}
@@ -39,7 +42,9 @@ const Bookings = () => {
             price={booking.price}
           />
         ))
-      )}
+      ) :
+        <LoaderMain />
+      }
 
     </section>
   );
