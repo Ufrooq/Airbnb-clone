@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import BookingCard from "./BookingCard";
 import { format, differenceInCalendarDays } from "date-fns";
 import "./style.scss";
-import LoaderMain from "../../loader/LoaderMain";
+import LoaderMain from "../../../components/LoaderMain";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);

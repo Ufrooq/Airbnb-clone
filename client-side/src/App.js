@@ -1,19 +1,18 @@
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
-import Feed from "./components/feed/Feed";
-import Footer from "./components/footer/Footer";
-import Rooms from "./components/rooms/Rooms";
-import Login from "./components/login/Login";
-import Reg from "./components/register/Reg";
-import { createContext, useEffect, useState } from "react";
-import Account from "./components/account/Account";
-import PerInfo from "./components/account/PerInfo";
-import AccForm from "./components/account/Accomodation/AccForm";
-import AccomodationPage from "./components/account/Accomodation/AccomodationPage";
-import Bookings from "./components/account/Booking/Bookings";
-import Loader from "./components/loader/LoaderMain";
-
+import Navbar from "./pages/navbar/Navbar";
+import Feed from "./pages/feed/Feed";
+import Footer from "./pages/footer/Footer";
+import Rooms from "./pages/rooms/Rooms";
+import Login from "./pages/login/Login";
+import Reg from "./pages/register/Reg";
+import { createContext, useState } from "react";
+import Account from "./pages/account/Account";
+import PerInfo from "./pages/account/PerInfo";
+import AccForm from "./pages/account/Accomodation/AccForm";
+import AccomodationPage from "./pages/account/Accomodation/AccomodationPage";
+import Bookings from "./pages/account/Booking/Bookings";
+import BookedPlace from "./pages/account/Booking/BookedPlace";
 export const globalContext = createContext();
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -35,7 +34,7 @@ function App() {
                 <Route path=":id" element={<AccForm />} />
               </Route>
               <Route path="bookings" element={<Bookings />} />
-              <Route path="bookings/:id" element={<Rooms />} />
+              <Route path="bookings/:id" element={<BookedPlace />} />
             </Route>
           </Routes>
           <Footer />

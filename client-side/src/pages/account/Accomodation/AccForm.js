@@ -64,7 +64,6 @@ const AccForm = () => {
   const handlePhotosData = async (files) => {
     // send data to server and get response back
     try {
-
       const formData = new FormData();
       files.forEach((file) => {
         formData.append(`photos`, file)

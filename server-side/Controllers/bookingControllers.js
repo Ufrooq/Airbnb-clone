@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import BookingModel from "../Models/bookingModel.js";
+import placeModel from "../Models/placeModel.js";
 
 dotenv.config();
 
@@ -49,6 +50,18 @@ export const getBookings = async (req, res) => {
         }
     } catch (error) {
         console.log("assas")
+        res.status(500).json(error);
+    }
+};
+
+
+export const getBooking = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const booking = await placeModel.findById(id);
+        // console.log(booking);
+        res.status(200).json(booking);
+    } catch (error) {
         res.status(500).json(error);
     }
 };

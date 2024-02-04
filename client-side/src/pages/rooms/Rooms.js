@@ -4,7 +4,9 @@ import ReserveCard from "./ReserveCard";
 import Host from "./Host";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import LoaderMain from "../loader/LoaderMain";
+import LoaderMain from "../../components/LoaderMain";
+import ImgGallery from "../../components/ImgGallery";
+import Perks from "../../components/Perks";
 
 const Rooms = () => {
   const { id } = useParams();
@@ -26,7 +28,7 @@ const Rooms = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   const currentUser = async (owner) => {
     try {
       const response = await axios.get(
@@ -67,25 +69,7 @@ const Rooms = () => {
               {/* <i class="fa-regular fa-bookmark"></i> already saved-icons */}
             </div>
           </div>
-          <div className="gallery_section">
-            <div className="image_gallery">
-              {place.photos.map((photo, key) => (
-                <div id={`im_${key + 1}`} key={key} className="image_wrapper">
-                  <img
-                    src={`${process.env.REACT_APP_BASE_URL}/Uploads/${photo}`}
-                    alt={`photo${key + 1}`}
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="spects">
-              <h1>Tiny home in Râșnov Romacril, Romania</h1>
-              <p>4 guests. 2 bedrooms . 2 beds . 1 bath</p>
-              <p>
-                <i className="fa-solid fa-star"></i>4.9 . <a href="/">56 reviews</a> .
-              </p>
-            </div>
-          </div>
+          <ImgGallery photos={place.photos} />
           <div className="middle_section">
             <Host name={host} />
             <ReserveCard price={place.price} id={place._id} />
@@ -117,40 +101,7 @@ const Rooms = () => {
               {place.description}
             </p>
           </div>
-          <div className="services_section">
-            <h1>What this place offers</h1>
-            {perks ?
-              <div className="services">
-                <p>
-                  <i className="fa-solid fa-mountain-sun"></i>
-                  Free Park
-                </p>
-                <p>
-                  <i className="fa-solid fa-wifi"></i>
-                  Wifi
-                </p>
-                <p>
-                  <i class="fa-solid fa-road-barrier"></i>
-                  Free Entrance
-                </p>
-                <p>
-                  <i class="fa-solid fa-dog"></i>
-                  Pets
-                </p>
-                <p>
-                  <i class="fa-solid fa-radio"></i>
-                  Radio
-                </p>
-                <p>
-                  <i class="fa-solid fa-tv"></i>
-                  Tv
-                </p>
-              </div>
-              :
-              <p>No perks</p>
-            }
-            <button>Show all 8 amenities</button>
-          </div>
+          <Perks perks={perks} />
         </>
         :
         <LoaderMain />

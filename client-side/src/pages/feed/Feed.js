@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import Card from "../card/Card";
+import Card from "../../components/Card";
 import Login from "../login/Login";
 import { globalContext } from "../../App";
 import "./style.scss";
-import Loader from "../loader/LoaderMain";
+import Loader from "../../components/LoaderMain";
 
 const Feed = () => {
   // const { showModel } = useContext(globalContext);

@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import "./style.scss";
 
 const BookingCard = ({ placeId, img, title, checkIn, checkOut, nights, price }) => {
-    console.log(placeId);
     return (
         <Link
             to={placeId}
@@ -11,7 +10,7 @@ const BookingCard = ({ placeId, img, title, checkIn, checkOut, nights, price }) 
             style={{ textDecoration: "none", color: "black" }}
         >
             <div className="card_image">
-                <img src={`${process.env.REACT_APP_BASE_URL} /Uploads/${img} `}
+                <img src={`${process.env.REACT_APP_BASE_URL}/Uploads/${img} `}
                     alt="img"
                 />
             </div>

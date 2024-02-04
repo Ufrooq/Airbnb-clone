@@ -181,4 +181,11 @@ export const updatePlace = async (req, res) => {
   }
 };
 
-
+export const deletePlace = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log(id);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};

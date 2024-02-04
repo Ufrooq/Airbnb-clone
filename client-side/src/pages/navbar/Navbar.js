@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { globalContext } from "../../App";
-import DotsLoader from "../loader/DotsLoader";
+import DotsLoader from "../../components/DotsLoader";
 
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
@@ -109,10 +109,12 @@ const Navbar = () => {
             {!loader && suggestions ?
               <ul>
                 {suggestions.map((item) => (
-                  <>
-                    <li key={item._id}><a href={`#${item.title}`}>{item.title}</a></li>
+                  <div key={item._id}>
+                    <li >
+                      <a href={`#${item.title}`}>{item.title}</a>
+                    </li>
                     <hr />
-                  </>
+                  </div>
                 ))}
               </ul>
               :
@@ -120,8 +122,7 @@ const Navbar = () => {
             }
 
           </div>
-        )
-        }
+        )}
       </div>
       <div className="other">
         <i
