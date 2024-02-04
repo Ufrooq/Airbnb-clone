@@ -22,7 +22,7 @@ const Rooms = () => {
       setTimeout(() => {
         setperks(perksData);
         setplace(placeData);
-      });
+      }, 1000);
     } catch (error) {
       console.log(error);
     }

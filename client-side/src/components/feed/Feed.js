@@ -21,7 +21,7 @@ const Feed = () => {
       const data = await response.json();
       setTimeout(() => {
         setPosts([...data]);
-      }, 2000);
+      }, 1000);
 
     } catch (error) {
       console.log(error);
