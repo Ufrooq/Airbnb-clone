@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { globalContext } from "../../App";
@@ -7,8 +7,11 @@ const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
   const [userdata, setuserdata] = useState();
   const [showModel, setshowModel] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [suggestions, setSuggestions] = useState("");
+  const [isTyping, setisTyping] = useState("");
   const navigate = useNavigate();
+  const typingTimeoutRef = useRef(null);
+
   async function getUserData() {
     try {
       const response = await fetch(`${process.env.REACT_APP_BASE_URL}/users`, {
@@ -25,6 +28,8 @@ const Navbar = () => {
     }
   }
 
+
+
   function handleNavigation(par) {
     setshowModel(false);
     if (par == "in") {
@@ -34,8 +39,35 @@ const Navbar = () => {
     navigate("/register");
   }
 
-  function handleSearch() {
-    console.log("items");
+
+  const fetchPosts = async (value) => {
+    try {
+      const response = await fetch(
+        `${process.env.REACT_APP_BASE_URL}/places`,
+        {
+          method: "GET",
+          credentials: "include",
+          withCredentials: true,
+        }
+      );
+      const data = await response.json();
+      const sugg = data.filter(
+        (item) => value && item?.title?.toLowerCase().includes(value)
+      )
+      setSuggestions(sugg);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function handleSearch(e) {
+    setisTyping(e.target.value);
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+    typingTimeoutRef.current = setTimeout(() => {
+      fetchPosts(e.target.value);
+    }, 1000);
   }
 
 
@@ -60,12 +92,23 @@ const Navbar = () => {
             <i className="fa-solid fa-magnifying-glass">
             </i>
           </button>
-          <input type="text" onChange={() => setShowSuggestions(true)} />
+          <input
+            type="text"
+            placeholder="Search places..."
+            value={isTyping}
+            onChange={handleSearch}
+            ref={typingTimeoutRef}
+          />
         </div>
-        {showSuggestions && (
-          <div className="suggestions">
-
-          </div>)
+        {isTyping && (
+          <div className="suggestion_box">
+            <ul>
+              {suggestions && suggestions.map((item) => (
+                <li key={item._id}>{item.title}</li>
+              ))}
+            </ul>
+          </div>
+        )
         }
       </div>
       <div className="other">
@@ -100,7 +143,7 @@ const Navbar = () => {
           </div>
         ) : null}
       </div>
-    </section>
+    </section >
   );
 };
 
