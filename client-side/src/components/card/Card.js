@@ -8,6 +8,7 @@ const Card = ({ title, img, desc, price, id }) => {
     <Link to={`/rooms/${id}`}
       style={{ textDecoration: "none", color: "black" }}
       className="card"
+      id={title}
     >
       <div className="media">
         <img

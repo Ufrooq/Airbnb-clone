@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { globalContext } from "../../App";
+import DotsLoader from "../loader/DotsLoader";
 
 const Navbar = () => {
   const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
@@ -9,6 +10,7 @@ const Navbar = () => {
   const [showModel, setshowModel] = useState(false);
   const [suggestions, setSuggestions] = useState("");
   const [isTyping, setisTyping] = useState("");
+  const [loader, setloader] = useState(true);
   const navigate = useNavigate();
   const typingTimeoutRef = useRef(null);
 
@@ -64,9 +66,11 @@ const Navbar = () => {
     setisTyping(e.target.value);
     if (typingTimeoutRef.current) {
       clearTimeout(typingTimeoutRef.current);
+      setloader(true);
     }
     typingTimeoutRef.current = setTimeout(() => {
       fetchPosts(e.target.value);
+      setloader(false);
     }, 1000);
   }
 
@@ -102,11 +106,19 @@ const Navbar = () => {
         </div>
         {isTyping && (
           <div className="suggestion_box">
-            <ul>
-              {suggestions && suggestions.map((item) => (
-                <li key={item._id}>{item.title}</li>
-              ))}
-            </ul>
+            {!loader && suggestions ?
+              <ul>
+                {suggestions.map((item) => (
+                  <>
+                    <li key={item._id}><a href={`#${item.title}`}>{item.title}</a></li>
+                    <hr />
+                  </>
+                ))}
+              </ul>
+              :
+              <DotsLoader />
+            }
+
           </div>
         )
         }

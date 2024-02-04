@@ -3,12 +3,11 @@ import Card from "../card/Card";
 import Login from "../login/Login";
 import { globalContext } from "../../App";
 import "./style.scss";
+import Loader from "../loader/LoaderMain";
 
 const Feed = () => {
   // const { showModel } = useContext(globalContext);
   const [posts, setPosts] = useState([]);
-
-
   const fetchPosts = async () => {
     try {
       const response = await fetch(
@@ -20,8 +19,10 @@ const Feed = () => {
         }
       );
       const data = await response.json();
-      setPosts([...data]);
-      console.log(data);
+      setTimeout(() => {
+        setPosts([...data]);
+      }, 2000);
+
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +49,7 @@ const Feed = () => {
           }
         </>
         :
-        <p>No posts</p>
+        <Loader />
       }
     </section>
   );

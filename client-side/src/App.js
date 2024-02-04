@@ -12,6 +12,7 @@ import PerInfo from "./components/account/PerInfo";
 import AccForm from "./components/account/Accomodation/AccForm";
 import AccomodationPage from "./components/account/Accomodation/AccomodationPage";
 import Bookings from "./components/account/Booking/Bookings";
+import Loader from "./components/loader/LoaderMain";
 
 export const globalContext = createContext();
 function App() {

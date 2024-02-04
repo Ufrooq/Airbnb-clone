@@ -4,6 +4,7 @@ import ReserveCard from "./ReserveCard";
 import Host from "./Host";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import LoaderMain from "../loader/LoaderMain";
 
 const Rooms = () => {
   const { id } = useParams();
@@ -18,8 +19,10 @@ const Rooms = () => {
       );
       // destructuring response fom server -->
       const { placeData, perksData } = response.data;
-      setperks(perksData);
-      setplace(placeData);
+      setTimeout(() => {
+        setperks(perksData);
+        setplace(placeData);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -42,12 +45,9 @@ const Rooms = () => {
 
   useEffect(() => {
     if (place) {
-      console.log(place);
       currentUser(place.owner);
     }
   }, [place]);
-
-
 
 
 
@@ -153,9 +153,8 @@ const Rooms = () => {
           </div>
         </>
         :
-        <p>loading...</p>
+        <LoaderMain />
       }
-
     </section>
   );
 };
