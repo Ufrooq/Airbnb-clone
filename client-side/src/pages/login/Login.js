@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { globalContext } from "../../App";
+import Mycontext from "../../components/Mycontext";
 
 const Login = () => {
-  const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
+  const { isLoggedIn, setisLoggedIn } = useContext(Mycontext);
   const navigate = useNavigate();
   const [userData, setuserData] = useState({
     email: "",

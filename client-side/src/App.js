@@ -6,19 +6,28 @@ import Footer from "./pages/footer/Footer";
 import Rooms from "./pages/rooms/Rooms";
 import Login from "./pages/login/Login";
 import Reg from "./pages/register/Reg";
-import { createContext, useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "./pages/account/Account";
 import PerInfo from "./pages/account/PerInfo";
 import AccForm from "./pages/account/Accomodation/AccForm";
 import AccomodationPage from "./pages/account/Accomodation/AccomodationPage";
 import Bookings from "./pages/account/Booking/Bookings";
 import BookedPlace from "./pages/account/Booking/BookedPlace";
-export const globalContext = createContext();
+import Mycontext from "./components/Mycontext";
+import IsLoggedIn from "./components/IsLoggedIn";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
+  async function fetchData() {
+    const response = await IsLoggedIn();
+    setisLoggedIn(response);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
   return (
-    <globalContext.Provider value={{ isLoggedIn, setisLoggedIn }}>
+    <Mycontext.Provider value={{ isLoggedIn, setisLoggedIn }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
@@ -40,7 +49,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </div>
-    </globalContext.Provider>
+    </Mycontext.Provider>
   );
 }
 

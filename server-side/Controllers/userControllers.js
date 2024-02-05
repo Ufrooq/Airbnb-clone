@@ -184,7 +184,8 @@ export const updatePlace = async (req, res) => {
 export const deletePlace = async (req, res) => {
   try {
     const { id } = req.body;
-    console.log(id);
+    await placeModel.findByIdAndDelete(id);
+    res.status(200).json("successfully deleted !");
   } catch (error) {
     res.status(500).json(error);
   }

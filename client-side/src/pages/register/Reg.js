@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { globalContext } from "../../App";
+import Mycontext from "../../components/Mycontext";
 
 const Reg = () => {
   const navigate = useNavigate();
-  const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
+  const { isLoggedIn, setisLoggedIn } = useContext(Mycontext);
   const [userData, setuserData] = useState({
     name: "",
     email: "",

@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link, useNavigate } from "react-router-dom";
-import { globalContext } from "../../App";
+import Mycontext from "../../components/Mycontext";
 import DotsLoader from "../../components/DotsLoader";
 
 const Navbar = () => {
-  const { isLoggedIn, setisLoggedIn } = useContext(globalContext);
-  const [userdata, setuserdata] = useState();
+  const { isLoggedIn, setisLoggedIn } = useContext(Mycontext);
+  const [userdata, setuserdata] = useState(null);
   const [showModel, setshowModel] = useState(false);
   const [suggestions, setSuggestions] = useState("");
   const [isTyping, setisTyping] = useState("");

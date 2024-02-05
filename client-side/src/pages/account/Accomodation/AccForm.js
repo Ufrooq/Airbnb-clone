@@ -29,11 +29,8 @@ const AccForm = () => {
   const [starredImg, setstarredImg] = useState(-1);
 
   const [imagesFromBackEnd, setimagesFromBackEnd] = useState([]);
-  let name, val;
   const handleChange = (e) => {
-    name = e.target.name;
-    val = e.target.value;
-    setplaceData({ ...placeData, [name]: val });
+    setplaceData({ ...placeData, [e.target.name]: e.target.value });
   };
 
   const handleLinkPhotos = async (link) => {
@@ -49,12 +46,11 @@ const AccForm = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            link,
+            link: placeData.link,
           }),
         }
       );
       const data = await response.json();
-      console.log(data);
       setimagesFromBackEnd([...imagesFromBackEnd, data]);
     } catch (error) {
       console.log(error);
@@ -86,7 +82,8 @@ const AccForm = () => {
   };
   const handleConvertLink = (e) => {
     e.preventDefault();
-    handleLinkPhotos(placeData.link);
+    setplaceData({ ...placeData, link: e.target.value });
+    handleLinkPhotos();
   };
 
   const onImageChange = (e) => {
@@ -97,7 +94,13 @@ const AccForm = () => {
 
 
   const handleCheckboxes = (e) => {
-    setplaceData({ ...placeData, perks: { ...placeData.perks, [e.target.name]: !placeData.perks[e.target.name] } })
+    setplaceData({
+      ...placeData,
+      perks: {
+        ...placeData.perks,
+        [e.target.name]: !placeData.perks[e.target.name]
+      }
+    });
   }
 
   const getFormData = async () => {
@@ -186,11 +189,6 @@ const AccForm = () => {
     }
   };
 
-  const setCoverPhoto = (imgAddress) => {
-    // const filteredArray = imagesFromBackEnd.filter(item => item != imgAddress)
-    // setimagesFromBackEnd(filteredArray);
-    console.log(imgAddress);
-  }
   const removePhoto = (imgAddress) => {
     const filteredArray = imagesFromBackEnd.filter(item => item != imgAddress)
     setimagesFromBackEnd(filteredArray);
