@@ -15,6 +15,7 @@ import Bookings from "./pages/account/Booking/Bookings";
 import BookedPlace from "./pages/account/Booking/BookedPlace";
 import Mycontext from "./components/Mycontext";
 import IsLoggedIn from "./components/IsLoggedIn";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
 
@@ -36,7 +37,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
             <Route path="/rooms/:id" element={<Rooms />} />
-            <Route path="/account" element={<Account />}>
+            <Route path="/account" element={<ProtectedRoute Component={Account} />}>
               <Route path="perInfo" element={<PerInfo />} />
               <Route path="accomodations" element={<AccomodationPage />}>
                 <Route path="new" element={<AccForm />} />

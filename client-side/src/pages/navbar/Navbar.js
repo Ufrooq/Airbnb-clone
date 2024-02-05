@@ -74,6 +74,14 @@ const Navbar = () => {
     }, 1000);
   }
 
+  const handleLogout = async () => {
+    try {
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   useEffect(() => {
     getUserData();
@@ -141,7 +149,7 @@ const Navbar = () => {
                   <Link to="/account" style={{ color: "black" }}>
                     {userdata.currentUser.name}'s Profile
                   </Link>
-                  <button>Logout</button>
+                  <button onClick={handleLogout}>Logout</button>
                 </>
               ) : (
                 <>

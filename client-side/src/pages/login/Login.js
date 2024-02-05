@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Mycontext from "../../components/Mycontext";
 
 const Login = () => {
-  const { isLoggedIn, setisLoggedIn } = useContext(Mycontext);
+  const { setisLoggedIn } = useContext(Mycontext);
   const navigate = useNavigate();
   const [userData, setuserData] = useState({
     email: "",

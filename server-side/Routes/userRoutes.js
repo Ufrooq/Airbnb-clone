@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { deletePlace, getPlaces, getPlacesById, loginUser, registerPlace, registerUser, updatePlace } from "../Controllers/userControllers.js";
+import { deletePlace, getPlaces, getPlacesById, loginUser, logoutUser, registerPlace, registerUser, updatePlace } from "../Controllers/userControllers.js";
 import { checkCurrentUser } from "../Middlewares/validateToken.js";
 import { upload, uploadPhotos } from "../Controllers/uploadMedia.js";
 import multer from "multer";
@@ -9,6 +9,7 @@ const router = Router();
 router.get("/", checkCurrentUser);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
+router.post("/logout", logoutUser);
 router.post("/linkMedia", upload);
 router.post("/places", registerPlace);
 router.put("/places/:id", updatePlace);

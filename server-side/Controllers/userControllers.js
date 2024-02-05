@@ -190,3 +190,7 @@ export const deletePlace = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+export const logoutUser = (req, res) => {
+  res.cookie("jwt", "", { maxAge: 1 }).send();
+};
