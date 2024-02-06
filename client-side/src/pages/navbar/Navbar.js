@@ -74,9 +74,18 @@ const Navbar = () => {
     }, 1000);
   }
 
+
+
   const handleLogout = async () => {
     try {
-
+      const response = await fetch(`${process.env.REACT_APP_BASE_URL}/users/logout`, {
+        method: "POST",
+        credentials: "include",
+      });
+      if (response.ok) {
+        setisLoggedIn(false);
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -135,7 +144,7 @@ const Navbar = () => {
       <div className="other">
         <i
           class="fa-solid fa-ellipsis-vertical"
-          onClick={() => setshowModel(true)}
+          onClick={() => setshowModel(!showModel)}
         ></i>
         {showModel ? (
           <div className="model">

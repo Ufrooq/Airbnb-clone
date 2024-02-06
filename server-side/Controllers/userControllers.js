@@ -192,5 +192,5 @@ export const deletePlace = async (req, res) => {
 };
 
 export const logoutUser = (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1 }).send();
+  res.cookie("jwt", "", { maxAge: 1 }).status(200).json("logged out");
 };

@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../components/Card";
-import Login from "../login/Login";
-import { globalContext } from "../../App";
 import "./style.scss";
 import Loader from "../../components/LoaderMain";
+import { useNavigate } from "react-router-dom";
 
 const Feed = () => {
   // const { showModel } = useContext(globalContext);
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
   const fetchPosts = async () => {
     try {
       const response = await fetch(

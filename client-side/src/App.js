@@ -16,28 +16,22 @@ import BookedPlace from "./pages/account/Booking/BookedPlace";
 import Mycontext from "./components/Mycontext";
 import IsLoggedIn from "./components/IsLoggedIn";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Welcome from "./components/Welcome";
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState(false);
-
-  async function fetchData() {
-    const response = await IsLoggedIn();
-    setisLoggedIn(response);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, [])
+  console.log("APpp");
+  const [isLoggedIn, setisLoggedIn] = useState(null);
   return (
     <Mycontext.Provider value={{ isLoggedIn, setisLoggedIn }}>
       <div className="App">
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Feed />} />
+            <Route path="/" element={<ProtectedRoute Component={Feed} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
             <Route path="/rooms/:id" element={<Rooms />} />
             <Route path="/account" element={<ProtectedRoute Component={Account} />}>
+              <Route index element={<Welcome />} />
               <Route path="perInfo" element={<PerInfo />} />
               <Route path="accomodations" element={<AccomodationPage />}>
                 <Route path="new" element={<AccForm />} />

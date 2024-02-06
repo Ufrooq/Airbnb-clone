@@ -1,17 +1,22 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 const Account = () => {
   return (
     <section className="account_section">
-      <br />
-      <Link to="perInfo">Personal Info</Link>
-      <br />
-      <Link to="accomodations">Accomodations</Link>
-      <br />
-      <Link to="bookings">Bookings</Link>
+      <div className="navigations">
+        <NavLink to="perInfo">
+          <i class="fa-solid fa-user"></i>Personal Info
+        </NavLink>
+        <NavLink to="accomodations">
+          <i class="fa-solid fa-list"></i>Accomodations
+        </NavLink>
+        <NavLink to="bookings">
+          <i class="fa-solid fa-house"></i>Bookings
+        </NavLink>
+      </div>
       <Outlet />
-    </section>
+    </section >
   );
 };
 

@@ -33,7 +33,7 @@ const BookingCard = ({ placeId, img, title, checkIn, checkOut, nights, price }) 
                         </i>
                         {nights} nights{" "}
                     </span>
-                    | Total Price : <span style={{ fontWeight: "bold" }}>${price}</span>
+                    | <i class="fa-solid fa-wallet"></i> Total Price : <span style={{ fontWeight: "bold" }}>${price}</span>
                 </div>
             </div>
         </Link>

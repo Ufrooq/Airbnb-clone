@@ -1,19 +1,33 @@
 import React, { useContext, useEffect } from 'react';
 import Mycontext from "../components/Mycontext";
 import { useNavigate } from 'react-router-dom';
+import IsLoggedIn from './IsLoggedIn';
 
 const ProtectedRoute = ({ Component }) => {
     const navigate = useNavigate();
-    const { isLoggedIn } = useContext(Mycontext);
+    const { isLoggedIn, setisLoggedIn } = useContext(Mycontext);
+
+    async function fetchData() {
+        const response = await IsLoggedIn();
+        setisLoggedIn(response);
+        if (response.ok) {
+            navigate("/");
+        }
+    }
+
     useEffect(() => {
-        if (!isLoggedIn) {
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        if (isLoggedIn == false) {
             navigate("/login");
         }
     });
     return (
-        <div>
+        <>
             <Component />
-        </div>
+        </>
     );
 };
 

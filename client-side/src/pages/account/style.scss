@@ -41,4 +41,30 @@
       }
     }
   }
+
+  .navigations {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    column-gap: 20px;
+
+    :any-link {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background-color: #e1dfdf;
+      padding: 8px 20px;
+      border-radius: 20px;
+      color: black;
+    }
+    .active {
+      background-color: #fa4d6d;
+      i {
+        color: #fff;
+      }
+      color: #fff;
+    }
+  }
 }
