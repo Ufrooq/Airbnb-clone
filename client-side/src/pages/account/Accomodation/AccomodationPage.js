@@ -33,9 +33,9 @@ const AccomodationPage = () => {
 
   return (
     <section className="accomodations_section">
-      <h2>Accomodation</h2>
+      <h1>My Accomodations</h1>
       <button onClick={() => navigate("/account/accomodations/new")}>
-        Add new Plcaes
+        Add new Plcaes <i class="fa-solid fa-plus"></i>
       </button>
       <Outlet />
       {

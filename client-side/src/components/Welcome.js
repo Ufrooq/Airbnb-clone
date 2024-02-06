@@ -1,26 +1,29 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Welcome = () => {
+    const navigate = useNavigate();
     return (
         <section className='welcome_'>
             <lord-icon
                 src="https://cdn.lordicon.com/gqjpawbc.json"
-                trigger="hover"
+                trigger="loop"
                 style={{
                     width: "150px",
                     height: "150px",
-                    color: "blue",
-                    "--primary-color": "#121331",
-                    "--secondary-color": "#fa4d6d"
+                    backgroundColor: "#fa4d6d16",
+                    borderRadius: "50%",
+                    boxShadow: "rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px"
                 }}
                 className="icon_"
             >
             </lord-icon>
             <h1>
-                Hey,<span>umar👋</span>
+                Hey, <span>umar</span>👋<br />
+                Welcome to your profile
             </h1>
             <p>Let's start your airbnb journey by booking your first place.</p>
-            <button>Start Booking</button>
+            <button onClick={() => navigate("/")}>Start Booking</button>
         </section>
     )
 }

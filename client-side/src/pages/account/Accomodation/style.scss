@@ -1,5 +1,48 @@
 .accomodations_section {
-  padding: 20px 0px;
+  margin: 40px 0px;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  h1 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 800;
+    padding: 10px 0px;
+  }
+  button {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #fa4d6d;
+    border: none;
+    color: #fff;
+    border-radius: 25px;
+    border: 1.5px solid #fa4d6d;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    transition: all 0.3s;
+
+    i {
+      background-color: white;
+      width: 20px;
+      height: 20px;
+      color: #fa4d6d;
+      padding-top: 2px;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: #fa4d6d;
+
+      i {
+        background-color: #fa4d6d;
+        color: #fff;
+      }
+    }
+  }
   form {
     display: flex;
     flex-direction: column;
