@@ -266,3 +266,12 @@ $pink_color: #fa4d6d;
     }
   }
 }
+
+.empty_ {
+  display: flex;
+  i {
+    margin: 10px auto;
+    font-size: 5rem;
+    color: #000;
+  }
+}

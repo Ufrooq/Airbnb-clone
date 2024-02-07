@@ -4,9 +4,11 @@ import BookingCard from "./BookingCard";
 import { format, differenceInCalendarDays } from "date-fns";
 import "./style.scss";
 import LoaderMain from "../../../components/LoaderMain";
+import Empty from "../../../components/Empty";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
+  const [noDataFound, setnoDataFound] = useState(null);
   const getBookings = async () => {
     // send data to server and get response back
     try {
@@ -15,7 +17,11 @@ const Bookings = () => {
         { withCredentials: true },
       );
       setTimeout(() => {
-        setBookings(response.data);
+        if (response.ok) {
+          setBookings(response.data);
+        } else {
+          setnoDataFound(true);
+        }
       }, 1000);
     } catch (error) {
       console.log(error);
@@ -43,9 +49,8 @@ const Bookings = () => {
           />
         ))
       ) :
-        <LoaderMain />
+        (noDataFound == null) ? <LoaderMain /> : <Empty />
       }
-
     </section>
   );
 };
