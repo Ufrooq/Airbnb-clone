@@ -14,11 +14,9 @@ import AccomodationPage from "./pages/account/Accomodation/AccomodationPage";
 import Bookings from "./pages/account/Booking/Bookings";
 import BookedPlace from "./pages/account/Booking/BookedPlace";
 import Mycontext from "./components/Mycontext";
-import IsLoggedIn from "./components/IsLoggedIn";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome";
 function App() {
-  console.log("APpp");
   const [isLoggedIn, setisLoggedIn] = useState(null);
   return (
     <Mycontext.Provider value={{ isLoggedIn, setisLoggedIn }}>

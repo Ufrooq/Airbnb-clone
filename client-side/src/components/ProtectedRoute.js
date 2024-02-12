@@ -9,6 +9,7 @@ const ProtectedRoute = ({ Component }) => {
 
     async function fetchData() {
         const response = await IsLoggedIn();
+        console.log(response);
         setisLoggedIn(response);
         if (response.ok) {
             navigate("/");

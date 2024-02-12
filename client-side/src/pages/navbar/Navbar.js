@@ -28,7 +28,7 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
 
 
@@ -39,7 +39,7 @@ const Navbar = () => {
       return;
     }
     navigate("/register");
-  }
+  };
 
 
   const fetchPosts = async (value) => {
@@ -60,7 +60,7 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   function handleSearch(e) {
     setisTyping(e.target.value);
@@ -72,7 +72,7 @@ const Navbar = () => {
       fetchPosts(e.target.value);
       setloader(false);
     }, 1000);
-  }
+  };
 
 
 
@@ -89,7 +89,7 @@ const Navbar = () => {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
 
   useEffect(() => {
@@ -108,9 +108,14 @@ const Navbar = () => {
         <Link style={{ color: "black" }}>Anywhere</Link>|
         <Link style={{ color: "black" }}>Anyweek</Link>|
         <Link style={{ color: "black" }}>Add guests</Link>
-        <div className="searchBox">
+        <div className="searchBox"
+          style={{
+            cursor: `${userdata ? "" : "not-allowed"}`,
+            pointerEvents: `${userdata ? "" : "none"}`
+          }}
+        >
           <button onClick={handleSearch}>
-            <i className="fa-solid fa-magnifying-glass">
+            <i className="fa-solid fa-magnifying-glass search_">
             </i>
           </button>
           <input
@@ -119,7 +124,13 @@ const Navbar = () => {
             value={isTyping}
             onChange={handleSearch}
             ref={typingTimeoutRef}
+            disabled={userdata.length > 0}
+
           />
+          <i
+            class="fa-solid fa-xmark cross_"
+            onClick={() => setisTyping("")}
+          ></i>
         </div>
         {isTyping && (
           <div className="suggestion_box">

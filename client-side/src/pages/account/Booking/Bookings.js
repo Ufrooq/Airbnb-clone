@@ -17,7 +17,7 @@ const Bookings = () => {
         { withCredentials: true },
       );
       setTimeout(() => {
-        if (response.ok) {
+        if (response.status == 200) {
           setBookings(response.data);
         } else {
           setnoDataFound(true);
@@ -49,7 +49,7 @@ const Bookings = () => {
           />
         ))
       ) :
-        (noDataFound == null) ? <LoaderMain /> : <Empty />
+        (noDataFound == null) ? <LoaderMain /> : <Empty title="Bookings" />
       }
     </section>
   );

@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./style.scss";
 import { Outlet, useNavigate } from "react-router-dom";
 import MyAccmodations from "./MyAccmodations";
+import LoaderMain from "../../../components/LoaderMain";
+import Empty from "../../../components/Empty";
 
 
 
 const AccomodationPage = () => {
-  console.log("AccomodationPage");
   const navigate = useNavigate();
   const [places, setplaces] = useState([]);
+  const [noDataFound, setnoDataFound] = useState(null);
 
   const getPlaces = async () => {
     // send data to server and get response back
@@ -22,7 +24,13 @@ const AccomodationPage = () => {
         }
       );
       const data = await response.json();
-      setplaces([...data]);
+      setTimeout(() => {
+        if (response.ok && data.length > 0) {
+          setplaces([...data]);
+        } else {
+          setnoDataFound(true);
+        }
+      }, 1000);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +47,8 @@ const AccomodationPage = () => {
       </button>
       <Outlet />
       {
-        places.length > 0 ? <MyAccmodations places={places} /> : null
+        places.length > 0 ? <MyAccmodations places={places} /> :
+          (noDataFound == null) ? <LoaderMain /> : <Empty title="Accomodations" />
       }
     </section>
 

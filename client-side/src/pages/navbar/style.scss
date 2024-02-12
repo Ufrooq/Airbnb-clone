@@ -54,11 +54,10 @@ $pink_color: #fa4d6d;
         border-radius: 70px 0% 0% 70px;
         border: none;
         outline: none;
-        cursor: pointer;
         overflow: hidden;
         width: 50px;
         background-color: $pink_color;
-        i {
+        .search_ {
           font-weight: bold;
           font-size: 1.1rem;
           padding: 8px;
@@ -67,9 +66,14 @@ $pink_color: #fa4d6d;
         }
       }
       &:hover {
-        i {
+        .search_ {
           transform: scale(1.05);
         }
+      }
+      .cross_ {
+        padding: 0px 10px;
+        color: #696969;
+        cursor: pointer;
       }
     }
     .suggestion_box {

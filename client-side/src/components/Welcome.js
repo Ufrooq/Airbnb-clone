@@ -23,7 +23,7 @@ const Welcome = () => {
                 Welcome to your profile
             </h1>
             <p>Let's start your airbnb journey by booking your first place.</p>
-            <button onClick={() => navigate("/")}>Start Booking</button>
+            <button onClick={() => navigate("/")}>Start Exploring<i class="fa-regular fa-compass"></i></button>
         </section>
     )
 }

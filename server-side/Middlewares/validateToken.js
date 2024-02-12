@@ -29,13 +29,12 @@ export const checkCurrentUser = async (req, res, next) => {
   if (token) {
     jwt.verify(token, process.env.EXCESS_TOKEN, async (error, decoded) => {
       if (error) {
-        console.log(error.message);
+        res.status(500).json(error.message);
       } else {
         try {
           const currentUser = await userModel.findById(decoded.id);
           res.json({ currentUser });
         } catch (error) {
-          console.log("currentUser");
           res.status(500).json({ message: "Server error" });
         }
       }
