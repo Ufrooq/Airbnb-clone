@@ -292,3 +292,137 @@ $pink_color: #fa4d6d;
     font-size: 0.9rem;
   }
 }
+
+.ratin_ {
+  margin: 4rem 0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 60%;
+  .desc {
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+      color: #4a4a4a;
+    }
+  }
+  .review {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+
+    .stars {
+      display: flex;
+      gap: 10px;
+      i {
+        color: #c1c1c1;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+    button {
+      padding: 8px 20px;
+      cursor: pointer;
+      background-color: #fa4d6d;
+      border: none;
+      color: #fff;
+      border-radius: 25px;
+      border: 1.5px solid #fa4d6d;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      transition: all 0.3s;
+
+      i {
+        margin: 0px 5px;
+        width: 20px;
+        height: 20px;
+        padding-top: 2px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        background-color: transparent;
+        color: #fa4d6d;
+      }
+    }
+  }
+  // #c1c1c1
+  .all_reviews_ {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    h1 {
+      font-size: 1.5rem;
+    }
+    i {
+      padding: 10px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #eeeeef;
+      }
+    }
+  }
+}
+
+.model_ {
+  margin: 50px;
+  padding: 30px;
+  width: 50%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  border-radius: 10px;
+
+  .user {
+    display: flex;
+    gap: 20px;
+
+    img {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    .desc {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      h1 {
+        font-size: 1.1rem;
+        font-weight: 800;
+      }
+      p,
+      a {
+        font-size: 0.9rem;
+      }
+      a {
+        color: #fa4d6d;
+        text-decoration: none;
+      }
+    }
+  }
+  .comment {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+
+    .stars {
+      i {
+        color: #c1c1c1;
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+    textarea {
+      max-width: 350px;
+      padding: 10px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+  }
+}

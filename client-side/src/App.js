@@ -16,14 +16,15 @@ import BookedPlace from "./pages/account/Booking/BookedPlace";
 import Mycontext from "./components/Mycontext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome";
+import Modal from "./components/Modal";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(null);
   return (
     <Mycontext.Provider value={{ isLoggedIn, setisLoggedIn }}>
       <div className="App">
         <BrowserRouter>
-          <Navbar />
-          <Routes>
+          {/* <Navbar /> */}
+          {/* <Routes>
             <Route path="/" element={<ProtectedRoute Component={Feed} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
@@ -38,8 +39,9 @@ function App() {
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:id" element={<BookedPlace />} />
             </Route>
-          </Routes>
-          <Footer />
+          </Routes> */}
+          <Modal />
+          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     </Mycontext.Provider>

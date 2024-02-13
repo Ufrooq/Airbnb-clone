@@ -7,6 +7,7 @@ import axios from "axios";
 import LoaderMain from "../../components/LoaderMain";
 import ImgGallery from "../../components/ImgGallery";
 import Perks from "../../components/Perks";
+import Rating from "../../components/Rating";
 
 const Rooms = () => {
   const { id } = useParams();
@@ -74,6 +75,7 @@ const Rooms = () => {
             <Host name={host} />
             <ReserveCard price={place.price} id={place._id} />
           </div>
+          <Rating />
           <div className="description_section">
             <ul>
               <li>

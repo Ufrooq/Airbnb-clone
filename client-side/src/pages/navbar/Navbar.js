@@ -127,10 +127,10 @@ const Navbar = () => {
             disabled={userdata.length > 0}
 
           />
-          <i
+          {isTyping && <i
             class="fa-solid fa-xmark cross_"
             onClick={() => setisTyping("")}
-          ></i>
+          ></i>}
         </div>
         {isTyping && (
           <div className="suggestion_box">
