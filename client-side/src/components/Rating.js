@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rating = () => {
+const Rating = ({ handleModal }) => {
     return (
         <section className='ratin_'>
             <div className="desc">
@@ -15,7 +15,7 @@ const Rating = () => {
                     <i className='fa-solid fa-star'></i>
                     <i className='fa-solid fa-star'></i>
                 </div>
-                <button>Write review<i class="fa-regular fa-pen-to-square"></i></button>
+                <button onClick={handleModal}>Write review<i class="fa-regular fa-pen-to-square"></i></button>
             </div>
             <div className="all_reviews_">
                 <h1>Ratings and reviews</h1>

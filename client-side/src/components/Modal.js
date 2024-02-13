@@ -1,13 +1,14 @@
 import React from 'react'
 import avatar from "../assets/avatar.png";
 
-const Modal = () => {
+const Modal = ({ handleModal }) => {
     return (
         <div className="model">
             <div className="overlay"></div>
-            <div className='model_content'>
+            <div className="model_content">
                 <i
                     class="fa-solid fa-xmark cross_"
+                    onClick={handleModal}
                 ></i>
                 <div className="user">
                     <img src={avatar} alt="" />
@@ -37,7 +38,7 @@ const Modal = () => {
                     <button>Submit</button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

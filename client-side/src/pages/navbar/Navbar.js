@@ -124,7 +124,7 @@ const Navbar = () => {
             value={isTyping}
             onChange={handleSearch}
             ref={typingTimeoutRef}
-            disabled={userdata.length > 0}
+            disabled={userdata?.length > 0}
 
           />
           {isTyping && <i
@@ -158,7 +158,7 @@ const Navbar = () => {
           onClick={() => setshowModel(!showModel)}
         ></i>
         {showModel ? (
-          <div className="model">
+          <div className="nav_modal">
             <i
               class="fa-solid fa-xmark"
               onClick={() => setshowModel(false)}

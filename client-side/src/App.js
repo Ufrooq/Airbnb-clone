@@ -23,8 +23,8 @@ function App() {
     <Mycontext.Provider value={{ isLoggedIn, setisLoggedIn }}>
       <div className="App">
         <BrowserRouter>
-          {/* <Navbar /> */}
-          {/* <Routes>
+          <Navbar />
+          <Routes>
             <Route path="/" element={<ProtectedRoute Component={Feed} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Reg />} />
@@ -39,9 +39,8 @@ function App() {
               <Route path="bookings" element={<Bookings />} />
               <Route path="bookings/:id" element={<BookedPlace />} />
             </Route>
-          </Routes> */}
-          <Modal />
-          {/* <Footer /> */}
+          </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     </Mycontext.Provider>
