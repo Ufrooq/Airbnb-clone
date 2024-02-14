@@ -16,7 +16,6 @@ import BookedPlace from "./pages/account/Booking/BookedPlace";
 import Mycontext from "./components/Mycontext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome";
-import Modal from "./components/Modal";
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(null);
   return (
