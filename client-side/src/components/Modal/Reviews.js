@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Review from "./Review";
 
 const Reviews = ({ handleReviewFormModal }) => {
     return (
@@ -7,7 +8,7 @@ const Reviews = ({ handleReviewFormModal }) => {
                 class="fa-solid fa-xmark cross_"
                 onClick={handleReviewFormModal}
             ></i>
-            sadasuidiousanudasu
+            <Review />
         </div>
     )
 }
