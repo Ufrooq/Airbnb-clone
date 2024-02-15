@@ -1,11 +1,12 @@
 import React from 'react';
 import avatar from "../../assets/avatar.png";
+import "./style.scss";
 
 const ReviewForm = ({ handleReviewFormModal }) => {
     return (
         <div className="model_content">
             <i
-                class="fa-solid fa-xmark cross_"
+                class="fa-solid fa-xmark cross_2"
                 onClick={handleReviewFormModal}
             ></i>
             <div className="user">

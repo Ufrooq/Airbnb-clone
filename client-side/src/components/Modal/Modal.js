@@ -1,6 +1,7 @@
 import React from 'react'
 import ReviewForm from './ReviewForm';
 import Reviews from './Reviews';
+import "./style.scss"
 
 const Modal = ({ handleReviewFormModal, handleReviewsModal, reviewForm }) => {
     return (
