@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import avatar from "../../assets/avatar.png";
 
-const ReviewForm = ({ handleModal }) => {
+const ReviewForm = ({ handleReviewFormModal }) => {
     return (
         <div className="model_content">
             <i
                 class="fa-solid fa-xmark cross_"
-                onClick={handleModal}
+                onClick={handleReviewFormModal}
             ></i>
             <div className="user">
                 <img src={avatar} alt="" />

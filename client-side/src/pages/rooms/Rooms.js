@@ -8,14 +8,16 @@ import LoaderMain from "../../components/LoaderMain";
 import ImgGallery from "../../components/ImgGallery";
 import Perks from "../../components/Perks";
 import Rating from "../../components/Rating";
-import Modal from "../../components/Modal";
+import Modal from "../../components/Modal/Modal";
 
 const Rooms = () => {
   const { id } = useParams();
   const [place, setplace] = useState(null);
   const [perks, setperks] = useState(null);
   const [host, sethost] = useState(null);
-  const [showReviewModal, setshowReviewModal] = useState(false);
+  const [showModal, setshowModal] = useState(false);
+  const [reviewForm, setreviewForm] = useState(false);
+
 
   const getPlaceData = async () => {
     try {
@@ -43,9 +45,17 @@ const Rooms = () => {
     }
   }
 
-  const handleModal = () => {
-    setshowReviewModal(!showReviewModal);
+  const handleReviewFormModal = () => {
+    setshowModal(!showModal);
+    setreviewForm(true);
   };
+
+  const handleReviewsModal = () => {
+    setshowModal(!showModal);
+    setreviewForm(false);
+  };
+
+
   useEffect(() => {
     getPlaceData();
   }, []);
@@ -64,7 +74,12 @@ const Rooms = () => {
     <section className="room_section">
       {place ?
         <>
-          {showReviewModal && <Modal handleModal={handleModal} />}
+          {showModal
+            &&
+            <Modal
+              handleReviewFormModal={handleReviewFormModal}
+              reviewForm={reviewForm}
+            />}
           <h1 className="heading_main">{place.title}</h1>
           <div className="sub_main">
             <div className="reviews">
@@ -81,7 +96,10 @@ const Rooms = () => {
             <Host name={host} />
             <ReserveCard price={place.price} id={place._id} />
           </div>
-          <Rating handleModal={handleModal} />
+          <Rating
+            handleReviewFormModal={handleReviewFormModal}
+            handleReviewsModal={handleReviewsModal}
+          />
           <div className="description_section">
             <ul>
               <li>

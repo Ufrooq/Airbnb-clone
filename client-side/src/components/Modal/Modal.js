@@ -1,12 +1,17 @@
 import React from 'react'
-import avatar from "../assets/avatar.png";
 import ReviewForm from './ReviewForm';
+import Reviews from './Reviews';
 
-const Modal = ({ handleModal }) => {
+const Modal = ({ handleReviewFormModal, handleReviewsModal, reviewForm }) => {
     return (
         <div className="model">
             <div className="overlay"></div>
-            <ReviewForm handleModal={handleModal} />
+            {
+                reviewForm ?
+                    <ReviewForm handleReviewFormModal={handleReviewFormModal} />
+                    :
+                    <Reviews handleReviewFormModal={handleReviewFormModal} />
+            }
         </div >
     )
 }

@@ -19,6 +19,7 @@ const Feed = () => {
         }
       );
       const data = await response.json();
+      console.log(data);
       setTimeout(() => {
         setPosts([...data]);
       }, 1000);

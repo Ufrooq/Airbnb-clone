@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rating = ({ handleModal }) => {
+const Rating = ({ handleReviewFormModal, handleReviewsModal }) => {
     return (
         <section className='ratin_'>
             <div className="desc">
@@ -15,11 +15,11 @@ const Rating = ({ handleModal }) => {
                     <i className='fa-solid fa-star'></i>
                     <i className='fa-solid fa-star'></i>
                 </div>
-                <button onClick={handleModal}>Write review<i class="fa-regular fa-pen-to-square"></i></button>
+                <button onClick={handleReviewFormModal}>Write review<i class="fa-regular fa-pen-to-square"></i></button>
             </div>
             <div className="all_reviews_">
                 <h1>Ratings and reviews</h1>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-right" onClick={handleReviewsModal}></i>
             </div>
         </section>
     )
