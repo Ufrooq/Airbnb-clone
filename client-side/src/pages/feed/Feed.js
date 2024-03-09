@@ -3,10 +3,13 @@ import Card from "../../components/Card";
 import "./style.scss";
 import Loader from "../../components/LoaderMain";
 import { useNavigate } from "react-router-dom";
+import LoaderMain from "../../components/LoaderMain";
+import Empty from "../../components/Empty";
 
 const Feed = () => {
   // const { showModel } = useContext(globalContext);
   const [posts, setPosts] = useState([]);
+  const [noDataFound, setnoDataFound] = useState(null);
   const navigate = useNavigate();
   const fetchPosts = async () => {
     try {
@@ -50,7 +53,7 @@ const Feed = () => {
           }
         </>
         :
-        <Loader />
+        (noDataFound == null) ? <LoaderMain /> : <Empty title="Bookings" />
       }
     </section>
   );

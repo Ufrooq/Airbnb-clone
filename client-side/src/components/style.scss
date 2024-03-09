@@ -3,6 +3,7 @@
 $pink_color: #fa4d6d;
 .card_outer {
   position: relative;
+
   .heart {
     position: absolute;
     right: 30px;
@@ -12,10 +13,12 @@ $pink_color: #fa4d6d;
     cursor: pointer;
   }
   .card {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     width: 320px;
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
     .media {
       width: 100%;
       overflow: hidden;
